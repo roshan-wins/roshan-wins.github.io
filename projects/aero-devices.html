@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en" data-family="flow">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aero devices for high-performance cars | Roshan Karathan Pradeep</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="How rear wings, side skirts, canards and rear diffusers make downforce, and how they work together: theory, CFD of side skirts on a simplified body, and the Porsche 911 GT3 RS and McLaren 720S as case studies.">
+<meta name="color-scheme" content="light dark">
+<meta name="author" content="Roshan Karathan Pradeep">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Aero devices for high-performance cars">
+<meta property="og:description" content="How rear wings, side skirts, canards and rear diffusers make downforce, and how they work together: theory, CFD of side skirts on a simplified body, and the Porsche 911 GT3 RS and McLaren 720S as case studies.">
+<meta property="og:url" content="https://ringdingroshan.github.io/projects/aero-devices.html">
+<meta property="og:image" content="https://ringdingroshan.github.io/assets/img/og-card.png">
+<link rel="canonical" href="https://ringdingroshan.github.io/projects/aero-devices.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<script>try{var t=localStorage.getItem("rkp-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Didact+Gothic&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/site.css?v=202611040336">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="../index.html" aria-label="Roshan Karathan Pradeep, home">RKP</a>
+<nav class="nav" aria-label="Main">
+<a href="../index.html#work">Work</a>
+<a href="../index.html#about">About</a>
+<a href="../index.html#experience">Experience</a>
+<a href="../index.html#contact">Contact</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">
+<svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+<svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+</button>
+<a class="btn btn--ghost btn--small" href="../cv/Roshan_Karathan_Pradeep_CV.pdf">CV (PDF)</a>
+</div>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html#work">Work</a><span aria-hidden="true">/</span><a href="../index.html#flow">Flow and heat</a></nav>
+<header class="proj-head">
+<div>
+<h1 class="proj-title">Aero devices for high-performance cars</h1>
+<p class="proj-lede">How rear wings, side skirts, canards and rear diffusers make downforce, and how they work together: theory, CFD of side skirts on a simplified body, and the Porsche 911 GT3 RS and McLaren 720S as case studies.</p>
+</div>
+<dl class="meta-grid"><dt>Course</dt><dd>SG2211 Vehicle Aerodynamics, KTH</dd><dt>When</dt><dd>August 2026</dd><dt>Team</dt><dd>Group 10, three students</dd><dt>My part</dt><dd>The rear diffuser</dd><dt>Tools</dt><dd>SolidWorks, CFD</dd></dl>
+</header>
+
+<figure class="flow-hero" style="margin:0 0 40px">
+<canvas data-flow="../assets/data/naca2412-a4.json" data-mirror="true" role="img" aria-label="Streamlines around an inverted airfoil, the working principle of a rear wing, coloured by local speed"></canvas>
+<p class="view-pending" data-flow-fallback hidden>The flow field could not load.</p>
+<figcaption class="flow-caption">
+<span>A rear wing is an airfoil turned upside down: the faster flow under it pulls the car down. Inviscid flow around an inverted NACA 2412, computed for this page.</span>
+<span class="flow-legend"><span><i class="c"></i>slower than the free stream</span><span><i class="w"></i>faster</span></span>
+</figcaption>
+</figure>
+
+
+
+<div class="story">
+<div class="prose">
+<h2>Why downforce</h2>
+<p>Aerodynamic forces grow with the square of speed while mechanical grip stays roughly constant, so above a certain speed aerodynamics decides how much load the tires can carry. Rear wings, side skirts, canards and rear diffusers are four ways of turning the oncoming air into downforce without adding mass. The study covered the physics of each, how they interact, CFD of side skirts on a simplified body, and two production cars, the Porsche 911 GT3 RS and the McLaren 720S.</p>
+<h2>Four devices, one floor</h2>
+<ul>
+<li><b>Rear wing.</b> An inverted airfoil that makes downforce directly, at the cost of drag because it sits in the free stream. Downforce rises with angle of attack until the wing stalls.</li>
+<li><b>Side skirts.</b> A physical seal along the sills that throttles high-pressure air leaking into the low-pressure underbody. The gap to the road matters: too large and the seal leaks, too small and the skirt itself can separate the flow.</li>
+<li><b>Canards.</b> Small surfaces at the front corners whose main job is the tip vortex they shed, which pulls the turbulent wheel wake away from the floor edge.</li>
+<li><b>Rear diffuser.</b> A gently expanding duct that slows the underbody flow back to free-stream pressure. Too steep an angle and the flow separates, and the downforce goes with it.</li>
+</ul>
+<p>None of them works alone: the canard vortex runs along the skirt line, the skirts keep the floor flow clean, and the wing's low-pressure field helps pull air out of the diffuser.</p>
+<h2>CFD of the side skirts</h2>
+<p>A baseline body was modelled in SolidWorks and meshed with polyhedral cells, with refinement around the wheels and the lower body edge and prism layers sized for y⁺ ≈ 1 so the turbulence model resolves the viscous sublayer. Pathlines show the skirts blocking the cross-flow from the sides and keeping a faster, lower-pressure core under the floor.</p>
+<h2>My part: the rear diffuser</h2>
+<p>I did the diffuser part of the study. In short:</p>
+<ul>
+<li><b>How it works.</b> The diffuser is the expansion that answers the contraction at the splitter and the sealed floor: a controlled divergent duct that lets the fast, low-pressure underbody flow slow down and recover to free-stream pressure. That recovery is an adverse pressure gradient, so the expansion has to be gentle enough to keep the boundary layer attached.</li>
+<li><b>Where it fails.</b> Too steep an angle and the flow separates from the diffuser walls: the diffuser stalls and the downforce drops suddenly. CFD studies on production-like shapes point to the angle and the ride height as the variables that matter most, with moderate angles of about 7–10° the usual compromise, and curved profiles delaying separation further than straight ones.</li>
+<li><b>On a real car.</b> The McLaren 720S treats the floor and diffuser as one system and uses the low-pressure wake behind the car to pull flow out of the diffuser exit, which gives ground-effect downforce without the drag of a large wing.</li>
+<li><b>What it depends on.</b> Ride height and rake. If the rear lifts under hard braking, the effective expansion angle grows, the diffuser can stall and the rear loses downforce at once. That is why future designs are likely to pair diffusers with active suspension and better underbody sealing.</li>
+</ul>
+</div>
+<aside class="aside-stack">
+<div class="aside-block">
+<h2>COURSE</h2>
+<p>SG2211 Vehicle Aerodynamics, KTH, August 2026. Group 10, three students. My part: the rear diffuser.</p>
+</div>
+
+</aside>
+</div>
+
+<div class="figure-grid">
+
+<figure class="fig">
+<div class="fig__frame"><img src="../assets/img/aero-devices/solidworks-baseline-mesh.webp" width="1100" height="714" alt="SolidWorks model of a simplified car body and its polyhedral CFD mesh" loading="lazy" decoding="async"></div>
+<figcaption><b>Baseline body and mesh.</b> SolidWorks geometry (top) and the polyhedral volume mesh with refinement around the wheels and the lower body edge (bottom).</figcaption>
+</figure>
+
+</div>
+
+<nav class="sheet-nav" aria-label="Other projects">
+<a href="ev-cold-plate.html"><span class="dir">PREVIOUS, SHEET 9</span><strong>EV battery cold plate</strong></a>
+<a class="next" href="uav-wing.html"><span class="dir">NEXT, SHEET 11</span><strong>UAV wing optimization</strong></a>
+</nav>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-tb">
+<div><span class="k">NAME</span><span class="v">ROSHAN KARATHAN PRADEEP</span></div>
+<div><span class="k">TITLE</span><span class="v">AERO DEVICES FOR HIGH-PERFORMANCE CARS</span></div>
+<div><span class="k">SHEET</span><span class="v tnum">10 OF 12</span></div>
+<div><span class="k">REV</span><span class="v">H</span></div>
+<div><span class="k">DATE</span><span class="v tnum">2026-11-04</span></div>
+<div><span class="k">CONTACT</span><span class="v"><a href="../index.html#contact">EMAIL</a>, <a href="https://www.linkedin.com/in/roshanaerodynamics" rel="me">LINKEDIN</a></span></div>
+</div>
+<p class="foot-small">© 2026 Roshan Karathan Pradeep. Drawn in Stockholm, born in Chennai.</p>
+</div>
+</footer>
+<script src="../assets/js/site.js?v=202611040336"></script>
+<script src="../assets/js/flow-field.js?v=202611040336"></script>
+</body>
+</html>

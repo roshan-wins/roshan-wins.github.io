@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" data-family="flow">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UAV wing optimization | Roshan Karathan Pradeep</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Parametric external-aerodynamics CFD on UAV wing geometries, with NSGA-II multi-objective optimization to pick the aerodynamic attachments that balance drag against efficiency.">
+<meta name="color-scheme" content="light dark">
+<meta name="author" content="Roshan Karathan Pradeep">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UAV wing optimization">
+<meta property="og:description" content="Parametric external-aerodynamics CFD on UAV wing geometries, with NSGA-II multi-objective optimization to pick the aerodynamic attachments that balance drag against efficiency.">
+<meta property="og:url" content="https://ringdingroshan.github.io/projects/uav-wing.html">
+<meta property="og:image" content="https://ringdingroshan.github.io/assets/img/og-card.png">
+<link rel="canonical" href="https://ringdingroshan.github.io/projects/uav-wing.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<script>try{var t=localStorage.getItem("rkp-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Didact+Gothic&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/site.css?v=202611040336">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="../index.html" aria-label="Roshan Karathan Pradeep, home">RKP</a>
+<nav class="nav" aria-label="Main">
+<a href="../index.html#work">Work</a>
+<a href="../index.html#about">About</a>
+<a href="../index.html#experience">Experience</a>
+<a href="../index.html#contact">Contact</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">
+<svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+<svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+</button>
+<a class="btn btn--ghost btn--small" href="../cv/Roshan_Karathan_Pradeep_CV.pdf">CV (PDF)</a>
+</div>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html#work">Work</a><span aria-hidden="true">/</span><a href="../index.html#flow">Flow and heat</a></nav>
+<header class="proj-head">
+<div>
+<h1 class="proj-title">UAV wing optimization</h1>
+<p class="proj-lede">Parametric external-aerodynamics CFD on UAV wing geometries, with NSGA-II multi-objective optimization to pick the aerodynamic attachments that balance drag against efficiency.</p>
+</div>
+<dl class="meta-grid"><dt>Role</dt><dd>CFD engineer intern</dd><dt>Where</dt><dd>Reude Technologies</dd><dt>When</dt><dd>January–May 2024</dd><dt>Tools</dt><dd>CFD, NSGA-II</dd></dl>
+</header>
+
+<figure style="margin:0 0 40px;display:flex;flex-direction:column;gap:10px">
+<svg class="dwg" viewBox="0 0 1000 340" role="img" aria-label="Illustration of a Pareto front between drag and aerodynamic efficiency, not project data">
+<line class="m" x1="80" y1="290" x2="960" y2="290" stroke-width="1.4"/>
+<line class="m" x1="80" y1="290" x2="80" y2="30" stroke-width="1.4"/>
+<text class="tx2" x="960" y="322" font-size="15" text-anchor="end" font-family="var(--font-body)">Drag, lower is better</text>
+<text class="tx2" x="88" y="26" font-size="15" font-family="var(--font-body)">Aerodynamic efficiency, higher is better</text>
+<path class="acc" d="M150 230 C 230 120, 380 78, 560 64 S 860 56, 920 54" stroke-width="2.4" fill="none"/>
+<g class="sd">
+<circle cx="170" cy="216" r="6"/><circle cx="230" cy="150" r="6"/><circle cx="320" cy="104" r="6"/><circle cx="430" cy="80" r="6"/><circle cx="560" cy="64" r="6"/><circle cx="700" cy="58" r="6"/><circle cx="860" cy="55" r="6"/>
+</g>
+<g class="t" stroke-width="1.4">
+<circle cx="260" cy="236" r="5" fill="none"/><circle cx="350" cy="180" r="5" fill="none"/><circle cx="420" cy="214" r="5" fill="none"/><circle cx="520" cy="150" r="5" fill="none"/><circle cx="610" cy="120" r="5" fill="none"/><circle cx="640" cy="200" r="5" fill="none"/><circle cx="760" cy="110" r="5" fill="none"/><circle cx="820" cy="160" r="5" fill="none"/><circle cx="300" cy="260" r="5" fill="none"/><circle cx="480" cy="250" r="5" fill="none"/>
+</g>
+<text class="tx" x="580" y="46" font-size="15" font-family="var(--font-body)">Pareto front</text>
+</svg>
+<figcaption class="flow-caption"><span>How a two-objective search trades drag against efficiency. An illustration of the method, not the project's results: filled points are designs no other design beats on both counts.</span></figcaption>
+</figure>
+
+
+
+<div class="story">
+<div class="prose">
+<h2>The problem</h2>
+<p>A UAV wing has to carry the aircraft with as little drag as possible, and attachments on the wing shift that balance. The question was which attachment configuration gives the best trade-off between drag and aerodynamic efficiency.</p>
+<h2>Approach</h2>
+<ul>
+<li>Parametric external-aerodynamics CFD on the wing geometries, so each design in the space could be generated and simulated the same way.</li>
+<li>NSGA-II, a genetic algorithm for several objectives, searched the attachment design space for designs on the Pareto front between drag and efficiency, and the final configuration was picked from that front.</li>
+</ul>
+<h2>Result</h2>
+<p>The final configuration was chosen from the Pareto front. Its geometry and numbers are confidential, so the chart above shows the method, not the data.</p>
+</div>
+<aside class="aside-stack">
+<div class="aside-block">
+<h2>ROLE</h2>
+<p>CFD engineer intern, Reude Technologies, January to May 2024.</p>
+</div>
+
+</aside>
+</div>
+
+<div class="figure-grid">
+</div>
+
+<nav class="sheet-nav" aria-label="Other projects">
+<a href="aero-devices.html"><span class="dir">PREVIOUS, SHEET 10</span><strong>Aero devices for high-performance cars</strong></a>
+<a class="next" href="naca-2412.html"><span class="dir">NEXT, SHEET 12</span><strong>NACA 2412 with Gurney flaps and serrations</strong></a>
+</nav>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-tb">
+<div><span class="k">NAME</span><span class="v">ROSHAN KARATHAN PRADEEP</span></div>
+<div><span class="k">TITLE</span><span class="v">UAV WING OPTIMIZATION</span></div>
+<div><span class="k">SHEET</span><span class="v tnum">11 OF 12</span></div>
+<div><span class="k">REV</span><span class="v">H</span></div>
+<div><span class="k">DATE</span><span class="v tnum">2026-11-04</span></div>
+<div><span class="k">CONTACT</span><span class="v"><a href="../index.html#contact">EMAIL</a>, <a href="https://www.linkedin.com/in/roshanaerodynamics" rel="me">LINKEDIN</a></span></div>
+</div>
+<p class="foot-small">© 2026 Roshan Karathan Pradeep. Drawn in Stockholm, born in Chennai.</p>
+</div>
+</footer>
+<script src="../assets/js/site.js?v=202611040336"></script>
+
+</body>
+</html>

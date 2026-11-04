@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en" data-family="drawing">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MorphoLens scanners | Roshan Karathan Pradeep</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Three imaging machines at Morphle Labs: a blood scanner I took from concept to QC pass in five months, the slide loader of a 420-slide scanner, and a new electrical architecture for the MorphoLens 6.">
+<meta name="color-scheme" content="light dark">
+<meta name="author" content="Roshan Karathan Pradeep">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MorphoLens scanners">
+<meta property="og:description" content="Three imaging machines at Morphle Labs: a blood scanner I took from concept to QC pass in five months, the slide loader of a 420-slide scanner, and a new electrical architecture for the MorphoLens 6.">
+<meta property="og:url" content="https://ringdingroshan.github.io/projects/morpholens.html">
+<meta property="og:image" content="https://ringdingroshan.github.io/assets/img/og-card.png">
+<link rel="canonical" href="https://ringdingroshan.github.io/projects/morpholens.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<script>try{var t=localStorage.getItem("rkp-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700&family=Didact+Gothic&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/site.css?v=202611040336">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="../index.html" aria-label="Roshan Karathan Pradeep, home">RKP</a>
+<nav class="nav" aria-label="Main">
+<a href="../index.html#work">Work</a>
+<a href="../index.html#about">About</a>
+<a href="../index.html#experience">Experience</a>
+<a href="../index.html#contact">Contact</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">
+<svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+<svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+</button>
+<a class="btn btn--ghost btn--small" href="../cv/Roshan_Karathan_Pradeep_CV.pdf">CV (PDF)</a>
+</div>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html#work">Work</a><span aria-hidden="true">/</span><a href="../index.html#design">Design and build</a></nav>
+<header class="proj-head">
+<div>
+<h1 class="proj-title">MorphoLens scanners</h1>
+<p class="proj-lede">Three imaging machines at Morphle Labs: a blood scanner I took from concept to QC pass in five months, the slide loader of a 420-slide scanner, and a new electrical architecture for the MorphoLens 6.</p>
+</div>
+<dl class="meta-grid"><dt>Role</dt><dd>R&amp;D engineer and product owner</dd><dt>Where</dt><dd>Morphle Labs (YC20)</dd><dt>When</dt><dd>May 2024–May 2025</dd><dt>Machines</dt><dd>MorphoLens MH1, MorphoLens 420, MorphoLens 6</dd></dl>
+</header>
+
+<div class="sheet" style="margin-bottom:40px">
+<div class="sheet__inner">
+<div class="zones-h zones-h--top" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
+<div class="zones-v zones-v--left" aria-hidden="true"><span>A</span><span>B</span><span>C</span><span>D</span></div>
+<div class="zones-v zones-v--right" aria-hidden="true"><span>A</span><span>B</span><span>C</span><span>D</span></div>
+<div class="zones-h zones-h--bottom" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
+<div class="sheet__body">
+<div class="views">
+
+<figure class="view">
+<div class="view__img"><img src="../assets/img/morpholens/mh1-render.webp" width="992" height="1362" alt="CAD model of the MorphoLens MH1: an open frame with colour-coded cables running up its columns and an electronics deck on top" decoding="async"></div>
+<figcaption><span class="view__mark" aria-hidden="true">A</span><span class="caption-letter">MORPHOLENS MH1</span></figcaption>
+</figure>
+
+<figure class="view">
+<div class="view__img"><img src="../assets/img/morpholens/m420-iso.webp" width="852" height="1294" alt="CAD model of the MorphoLens 420 cabinet with its door open and the slide cartridges inside" decoding="async"></div>
+<figcaption><span class="view__mark" aria-hidden="true">B</span><span class="caption-letter">MORPHOLENS 420</span></figcaption>
+</figure>
+
+<figure class="view">
+<div class="view__img"><img src="../assets/img/morpholens/m6-cad-layout.webp" width="1100" height="1176" alt="CAD layout of the MorphoLens 6 electronics bay with its cable paths modelled" decoding="async"></div>
+<figcaption><span class="view__mark" aria-hidden="true">C</span><span class="caption-letter">MORPHOLENS 6, ELECTRONICS BAY</span></figcaption>
+</figure>
+</div>
+<p class="caption-letter" style="margin:18px 0 0">THREE MACHINES FROM MORPHLE LABS, VIEWS FROM CAD. NOT TO SCALE. DETAILS A TO C BELOW.</p>
+</div>
+</div>
+</div>
+
+<div class="results"><div class="result"><span class="result__value">5 months</span><span class="result__label">from concept to QC pass for the MorphoLens MH1</span></div><div class="result"><span class="result__value">1 µm</span><span class="result__label">planar motion held on the MH1 stage, for 100× imaging</span></div><div class="result"><span class="result__value">3 months</span><span class="result__label">to design and assemble the MorphoLens 420's multi-axis slide loader</span></div><div class="result"><span class="result__value">15 → 3</span><span class="result__label">field electrical failures a month on the MorphoLens 6</span></div></div>
+
+<section class="detail" id="mh1" aria-labelledby="mh1-title">
+<div class="detail__head"><span class="detail__mark" aria-hidden="true">A</span><div><p class="detail__kicker">DETAIL A · PRODUCT OWNER AND LEAD DESIGNER</p><h2 class="detail__title" id="mh1-title">MorphoLens MH1, a blood scanner in five months</h2></div></div>
+<div class="detail__body">
+<div class="prose">
+<p>The MH1 is a blood scanner. I owned it as product owner and lead designer, from the first concept to passing quality control in five months.</p>
+<p>The hard part was the motion. A sharp image at 100× magnification needs the slide to move in a plane held to 1 µm. I designed a custom horizontal planar axis on a roller-bearing system, with three-point plane tuning on each motion axis.</p>
+</div>
+<div class="detail__side">
+<div class="table-scroll">
+<table class="dwg-table spec">
+<caption>SPECIFICATION, VIEW A</caption>
+<tbody>
+<tr><th scope="row">ROLE</th><td>PRODUCT OWNER AND LEAD DESIGNER</td></tr>
+<tr><th scope="row">CONCEPT TO QC PASS</th><td>5 MONTHS</td></tr>
+<tr><th scope="row">MAGNIFICATION</th><td>100×</td></tr>
+<tr><th scope="row">PLANAR MOTION</th><td>WITHIN 1 µm</td></tr>
+<tr><th scope="row">PLANAR AXIS</th><td>ROLLER BEARINGS, THREE-POINT PLANE TUNING ON EACH AXIS</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+
+<section class="detail" id="m420" aria-labelledby="m420-title">
+<div class="detail__head"><span class="detail__mark" aria-hidden="true">B</span><div><p class="detail__kicker">DETAIL B · MECHANICAL DESIGNER</p><h2 class="detail__title" id="m420-title">MorphoLens 420, a loader for 420 slides</h2></div></div>
+<div class="detail__body">
+<div class="prose">
+<p>The MorphoLens 420 is a high-throughput scanner that handles 420 medical slides. I designed its loader mechanism and the slide cartridge, and designed and assembled the multi-axis loader in three months.</p>
+<p>Two things made it hard. The loader needs three linear axes and one rotary axis to move slides inside a tight space. And the slides have to stay accurately placed for the loader, even though users often take the cartridges in and out by hand.</p>
+<ul>
+<li>A counterbalanced vertical axis with a safety brake carries the load against gravity.</li>
+<li>Magnets and a ball-and-socket joint lock each cartridge in place against the loader.</li>
+</ul>
+<h3 class="detail__sub">The handle</h3>
+<p>Doctors found the slide cartridges awkward to put in and take out of the rack. I set two rules first: the cartridge must be handled with two hands, and placing or removing it must take little force. Magnets now position and align the cartridge. In place of an ordinary handle I designed a cup and a block: two fingers go into the cup and grip the block, the cartridge pivots about it and hangs level, and the slides come out easily. Wrists only bend so far, and this grip asks much less of them than the old handles did.</p>
+</div>
+<div class="detail__side">
+<div class="table-scroll">
+<table class="dwg-table spec">
+<caption>SPECIFICATION, VIEW B</caption>
+<tbody>
+<tr><th scope="row">ROLE</th><td>MECHANICAL DESIGNER</td></tr>
+<tr><th scope="row">CAPACITY</th><td>420 SLIDES</td></tr>
+<tr><th scope="row">LOADER AXES</th><td>3 LINEAR, 1 ROTARY</td></tr>
+<tr><th scope="row">VERTICAL AXIS</th><td>COUNTERBALANCED, SAFETY BRAKE</td></tr>
+<tr><th scope="row">CARTRIDGE LOCATION</th><td>MAGNETS, BALL AND SOCKET</td></tr>
+<tr><th scope="row">LOADER, DESIGN TO ASSEMBLY</th><td>3 MONTHS</td></tr>
+<tr><th scope="row">CARTRIDGE HANDLING</th><td>TWO HANDS, LOW FORCE, CUP-AND-BLOCK GRIP</td></tr>
+</tbody>
+</table>
+</div>
+
+<figure class="fig">
+<div class="fig__frame"><img src="../assets/img/morpholens/m420-front.webp" width="852" height="1176" alt="Front view of the MorphoLens 420 cabinet with the door open and two rows of slide cartridges" loading="lazy" decoding="async"></div>
+<figcaption><b>Front view, door open,</b> with the slide cartridges in place.</figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<section class="detail" id="m6" aria-labelledby="m6-title">
+<div class="detail__head"><span class="detail__mark" aria-hidden="true">C</span><div><p class="detail__kicker">DETAIL C · PRODUCT OWNER</p><h2 class="detail__title" id="m6-title">MorphoLens 6, rewired for the field</h2></div></div>
+<div class="detail__body">
+<div class="prose">
+<p>The MorphoLens 6 was already in the field, and its wiring was the weak point: unreliable, hard to reach for maintenance, and fatiguing on the moving axes. After-sales support kept seeing the same cable failures. I redesigned the machine's electrical architecture.</p>
+<ul>
+<li>Every cable path modelled in CAD to check bend radii and routing, so the CAD model became the source of truth for the wiring.</li>
+<li>IGUS cables and energy chains on the moving axes, and strict assembly procedures for the wiring.</li>
+<li>A mandatory routing path and minimum bend radius for each cable, and a strain relief designed for each cable type.</li>
+<li>A grounding scheme against induced noise, and custom snap-fit clamps that hold the cables and relieve strain.</li>
+</ul>
+<p>Field electrical failures fell from 15 a month to 3.</p>
+<figure class="chart-fig">
+<svg class="dwg" viewBox="0 0 400 230" role="img" aria-label="Bar chart: field electrical failures fell from 15 a month to 3 a month after the routing standard">
+<defs><pattern id="hx-bar" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(45)"><line class="t" x1="0" y1="0" x2="0" y2="9" stroke-width="1.2"/></pattern></defs>
+<line class="m" x1="60" y1="190" x2="380" y2="190" stroke-width="2"/>
+<line class="t" x1="60" y1="190" x2="60" y2="20" stroke-width="1.2"/>
+<line class="t" x1="56" y1="40" x2="380" y2="40" stroke-width="1" stroke-dasharray="3 5"/>
+<line class="t" x1="56" y1="115" x2="380" y2="115" stroke-width="1" stroke-dasharray="3 5"/>
+<text class="tx2" x="48" y="45" font-size="13" text-anchor="end">15</text>
+<text class="tx2" x="48" y="120" font-size="13" text-anchor="end">7.5</text>
+<text class="tx2" x="48" y="195" font-size="13" text-anchor="end">0</text>
+<rect class="m" x="110" y="40" width="80" height="150" fill="url(#hx-bar)" stroke-width="2"/>
+<rect class="m" x="250" y="160" width="80" height="30" fill="url(#hx-bar)" stroke-width="2"/>
+<text class="tx" x="150" y="30" font-size="18" text-anchor="middle">15</text>
+<text class="tx" x="290" y="150" font-size="18" text-anchor="middle">3</text>
+<text class="tx2" x="150" y="214" font-size="13" text-anchor="middle" letter-spacing="0.8">BEFORE</text>
+<text class="tx2" x="290" y="214" font-size="13" text-anchor="middle" letter-spacing="0.8">AFTER</text>
+</svg>
+<figcaption class="caption-letter">FIELD ELECTRICAL FAILURES PER MONTH, MORPHOLENS 6.</figcaption>
+</figure>
+</div>
+<div class="detail__side">
+
+<figure class="fig">
+<div class="fig__frame"><img src="../assets/img/morpholens/m6-as-built.webp" width="1056" height="1256" alt="Photo of the MorphoLens 6 electronics bay with labelled cables, a flat flex cable and a Raspberry Pi" loading="lazy" decoding="async"></div>
+<figcaption><b>As built.</b> The same electronics bay as view C, after the rework.</figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<div class="story">
+<div class="prose">
+<h2>The rest of the job</h2>
+<ul>
+<li>Ran design verification and validation on prototype and pilot machines, root-caused recurring failure modes, and wrote the findings into standard DFM and assembly guidelines.</li>
+<li>Specified and integrated off-the-shelf parts (linear roller bearings, rail blocks, special fasteners, cameras and Raspberry Pi computers), resolving fit, mounting and cable routing against the structure around them.</li>
+<li>Worked with domestic and international vendors and with purchasing to close manufacturability issues, specify heat treatment for hardened gears and shafts, and hold delivery dates.</li>
+<li>Gave remote and on-site field support as product owner for the MorphoLens 6, the MorphoLens 1 and custom variants.</li>
+</ul>
+</div>
+<aside class="aside-stack">
+<div class="aside-block">
+<h2>ROLE</h2>
+<p>R&amp;D engineer and product owner, Morphle Labs (YC20), May 2024 to May 2025.</p>
+</div>
+
+</aside>
+</div>
+
+<nav class="sheet-nav" aria-label="Other projects">
+<a href="rcv-dynamic.html"><span class="dir">PREVIOUS, SHEET 2</span><strong>RCV-Dynamic suspension</strong></a>
+<a class="next" href="inferno-racing-baja.html"><span class="dir">NEXT, SHEET 4</span><strong>Inferno Racing Baja</strong></a>
+</nav>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-tb">
+<div><span class="k">NAME</span><span class="v">ROSHAN KARATHAN PRADEEP</span></div>
+<div><span class="k">TITLE</span><span class="v">MORPHOLENS SCANNERS</span></div>
+<div><span class="k">SHEET</span><span class="v tnum">3 OF 12</span></div>
+<div><span class="k">REV</span><span class="v">H</span></div>
+<div><span class="k">DATE</span><span class="v tnum">2026-11-04</span></div>
+<div><span class="k">CONTACT</span><span class="v"><a href="../index.html#contact">EMAIL</a>, <a href="https://www.linkedin.com/in/roshanaerodynamics" rel="me">LINKEDIN</a></span></div>
+</div>
+<p class="foot-small">© 2026 Roshan Karathan Pradeep. Drawn in Stockholm, born in Chennai.</p>
+</div>
+</footer>
+<script src="../assets/js/site.js?v=202611040336"></script>
+
+</body>
+</html>

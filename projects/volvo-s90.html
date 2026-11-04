@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en" data-family="telemetry">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Volvo S90 vehicle model | Roshan Karathan Pradeep</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Three models of a Volvo S90, linear and Fiala bicycle models in MATLAB and a full Adams Car assembly, checked against VBOX track data from 50 to 90 km/h.">
+<meta name="color-scheme" content="light dark">
+<meta name="author" content="Roshan Karathan Pradeep">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Volvo S90 vehicle model">
+<meta property="og:description" content="Three models of a Volvo S90, linear and Fiala bicycle models in MATLAB and a full Adams Car assembly, checked against VBOX track data from 50 to 90 km/h.">
+<meta property="og:url" content="https://ringdingroshan.github.io/projects/volvo-s90.html">
+<meta property="og:image" content="https://ringdingroshan.github.io/assets/img/og-card.png">
+<link rel="canonical" href="https://ringdingroshan.github.io/projects/volvo-s90.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<script>try{var t=localStorage.getItem("rkp-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Semi+Condensed:wght@500;600&family=Didact+Gothic&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/site.css?v=202611040336">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="../index.html" aria-label="Roshan Karathan Pradeep, home">RKP</a>
+<nav class="nav" aria-label="Main">
+<a href="../index.html#work">Work</a>
+<a href="../index.html#about">About</a>
+<a href="../index.html#experience">Experience</a>
+<a href="../index.html#contact">Contact</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">
+<svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+<svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+</button>
+<a class="btn btn--ghost btn--small" href="../cv/Roshan_Karathan_Pradeep_CV.pdf">CV (PDF)</a>
+</div>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html#work">Work</a><span aria-hidden="true">/</span><a href="../index.html#dynamics">Vehicle dynamics and control</a></nav>
+<header class="proj-head">
+<div>
+<h1 class="proj-title">Volvo S90 vehicle model</h1>
+<p class="proj-lede">Three models of a Volvo S90, linear and Fiala bicycle models in MATLAB and a full Adams Car assembly, checked against VBOX track data from 50 to 90 km/h.</p>
+</div>
+<dl class="meta-grid"><dt>Course</dt><dd>SD2225 Ground Vehicle Dynamics, KTH</dd><dt>When</dt><dd>Spring 2026</dd><dt>Team</dt><dd>Group 7, three students</dd><dt>Tools</dt><dd>MATLAB, MSC Adams Car</dd></dl>
+</header>
+
+<section class="panel tel" id="simulator" aria-labelledby="sim-title" style="margin-bottom:40px">
+<div class="panel-head">
+<h2 class="panel-title" id="sim-title">Drive the model</h2>
+<ul class="legend" aria-label="Legend">
+<li><span class="swatch swatch--steer"></span>Steering input</li>
+<li><span class="swatch swatch--lin"></span>Linear tire</li>
+<li><span class="swatch swatch--fia"></span>Fiala tire</li>
+</ul>
+</div>
+<div class="sim" data-sim>
+<form class="controls" data-sim-controls>
+<fieldset class="control">
+<legend>Manoeuvre</legend>
+<div class="seg">
+<label><input type="radio" name="man" value="slalom" id="sim-man-slalom" checked><span>Slalom</span></label>
+<label><input type="radio" name="man" value="step" id="sim-man-step"><span>Step steer</span></label>
+</div>
+</fieldset>
+<div class="control">
+<label for="sim-speed">Speed <output id="sim-speed-out" for="sim-speed">90 km/h</output></label>
+<input type="range" id="sim-speed" min="30" max="130" step="5" value="90">
+</div>
+<div class="control">
+<label for="sim-amp">Steering-wheel angle <output id="sim-amp-out" for="sim-amp">70°</output></label>
+<input type="range" id="sim-amp" min="10" max="120" step="5" value="70">
+</div>
+<div class="control" data-slalom-only>
+<label for="sim-freq">Slalom frequency <output id="sim-freq-out" for="sim-freq">0.50 Hz</output></label>
+<input type="range" id="sim-freq" min="0.2" max="1.0" step="0.05" value="0.5">
+</div>
+<div class="control">
+<label for="sim-mu">Road friction, μ <output id="sim-mu-out" for="sim-mu">0.85</output></label>
+<input type="range" id="sim-mu" min="0.3" max="1.0" step="0.05" value="0.85">
+<span class="hint">0.85 is the dry asphalt used in the report. Try 0.4 for a wet road.</span>
+</div>
+<div class="control">
+<label for="sim-cs">Cornering stiffness, front / rear</label>
+<select id="sim-cs">
+<option value="200,300" selected>200 / 300 kN/rad, calibrated</option>
+<option value="100,400">100 / 400 kN/rad, understeer test</option>
+<option value="300,200">300 / 200 kN/rad, oversteer test</option>
+</select>
+<span class="hint">The three sets the group compared against the 90 km/h slalom.</span>
+</div>
+</form>
+<div class="sim-out">
+<div class="channels">
+<div class="channel" data-ch="swa">
+<div class="channel__label"><b>Steering wheel</b><span><i>δ</i><sub>sw</sub>, deg, <span data-range>±80</span></span></div>
+<div class="channel__plot"><svg viewBox="0 0 1000 112" preserveAspectRatio="none" aria-hidden="true"></svg></div>
+<div class="channel__read"><span class="k muted">Peak</span><span class="v" data-read="sw">–</span></div>
+</div>
+<div class="channel" data-ch="r">
+<div class="channel__label"><b>Yaw rate</b><span><i>r</i>, deg/s, <span data-range>±30</span></span></div>
+<div class="channel__plot"><svg viewBox="0 0 1000 112" preserveAspectRatio="none" aria-hidden="true"></svg></div>
+<div class="channel__read"><span class="k muted">Peak</span><span class="v lin" data-read="rl">–</span><span class="v fia" data-read="rf">–</span></div>
+</div>
+<div class="channel" data-ch="ay">
+<div class="channel__label"><b>Lateral accel.</b><span><i>a</i><sub>y</sub>, m/s², <span data-range>±12</span></span></div>
+<div class="channel__plot"><svg viewBox="0 0 1000 112" preserveAspectRatio="none" aria-hidden="true"></svg></div>
+<div class="channel__read"><span class="k muted">Peak</span><span class="v lin" data-read="al">–</span><span class="v fia" data-read="af">–</span></div>
+</div>
+<div class="channel channel--axis">
+<div class="channel__label" aria-hidden="true"></div>
+<div class="channel__plot" data-axis aria-hidden="true"><span>0 s</span><span>2</span><span>4</span><span>6</span><span>8 s</span></div>
+</div>
+</div>
+<div class="traj" data-traj>
+<svg viewBox="0 0 1000 320" role="img" aria-label="Path of the car seen from above, linear tire solid, Fiala tire dashed"></svg>
+</div>
+<p class="traj-cap" data-traj-cap>Top view.</p>
+<p class="sim-note" data-sim-note aria-live="polite"></p>
+</div>
+</div>
+</section>
+
+<div class="results"><div class="result"><span class="result__value">5 s</span><span class="result__label">faster in the standard slalom test, after suspension changes I made in Adams once the report was in</span></div><div class="result"><span class="result__value">8.5 m/s²</span><span class="result__label">lateral acceleration plateau measured in the 90 km/h slalom</span></div><div class="result"><span class="result__value">3.5 m/s²</span><span class="result__label">the level below which the linear bicycle model matches the car</span></div><div class="result"><span class="result__value">70.3 kN/m</span><span class="result__label">rear wheel rate in Adams Car, against 29.1 from the rigid-link hand calculation</span></div></div>
+
+<div class="story">
+<div class="prose">
+<h2>The question</h2>
+<p>When is a two-state bicycle model good enough, and when do you need a full multibody model? Our group built both for a Volvo S90 and drove them with the same steering inputs the real car saw on the Lunda airfield track.</p>
+<h2>Three models and one car</h2>
+<ul>
+<li><b>Bicycle model, MATLAB.</b> Lateral velocity and yaw rate as states, with either linear tires or Fiala brush tires that saturate at μF<sub>z</sub>. The measured steering angle and speed drive it.</li>
+<li><b>Full vehicle, Adams Car.</b> Double-wishbone front and multi-link rear, both with anti-roll bars; PAC2002 tires for 255/40 R19; a steering ratio of 16.3; brakes and powertrain. The assembled model weighs 2007 kg.</li>
+<li><b>Track data.</b> A VBOX GPS/IMU logged steering angle, velocities, yaw rate and accelerations at 100 Hz through ramp steer, step steer, double lane change and slalom runs between 50 and 90 km/h.</li>
+</ul>
+<h2>Calibrating the tires</h2>
+<p>Axle cornering stiffness sets how hard the car responds, so we tried three front and rear pairs against the 90 km/h slalom. With 100 / 400 kN/rad both bicycle models fell well short of the car, at about 10 deg/s of yaw rate and under 5 m/s² of lateral acceleration. With 300 / 200 kN/rad the linear model overshot to about 40 deg/s and the Fiala model lost its rear axle and spun at 1.6 s. 200 / 300 kN/rad matched the track data, so those values stayed for the rest of the study. The simulator above lets you try all three.</p>
+<h2>What the data showed</h2>
+<ul>
+<li>Below about 3.5 m/s² of lateral acceleration the linear bicycle model matches the car.</li>
+<li>In the 90 km/h slalom the real car saturates at about 8.5 m/s². The linear model keeps climbing past 10 m/s²; the Fiala and Adams models follow the plateau.</li>
+<li>Rigid-link hand calculations underestimate wheel rates because they leave out bushing stiffness: 18.4 against 25 kN/m at the front and 29.1 against 70.3 kN/m at the rear in parallel wheel travel.</li>
+<li>In the sharp reversal of the 90 km/h double lane change, Adams Car tracks the measurement most closely.</li>
+</ul>
+<h2>Mass and centre of gravity</h2>
+<p>With the Adams model validated, we changed the mass (−100, +100 and +200 kg) and moved the centre of gravity (−50, +50 and +100 mm) in step steers at 50 and 80 km/h. A lighter car and a rearward centre of gravity both raise the yaw response, and both effects grow with speed.</p>
+<h2>After the report</h2>
+<p>I kept working on the Adams Car model once the report was in. With modified suspension parameters, the model ran the standard slalom test 5 seconds faster. Those runs came after the report, so the figures above do not include them.</p>
+</div>
+<aside class="aside-stack">
+<div class="aside-block">
+<h2>ABOUT THE SIMULATOR</h2>
+<p>It uses the report's equations and parameters (1995 kg, yaw inertia 3090 kg·m², wheelbase 2.941 m, steering ratio 16.3) and integrates them in your browser. Unlike the report, it holds speed constant and uses a synthetic steering input instead of the recorded one.</p>
+</div>
+<div class="aside-block">
+<h2>TEAM</h2>
+<p>Group 7, three students, SD2225 Ground Vehicle Dynamics, KTH, spring 2026.</p>
+</div>
+</aside>
+</div>
+
+<div class="figure-grid">
+
+<figure class="fig fig--wide">
+<div class="fig__frame"><img src="../assets/img/volvo-s90/validation-slalom-90.webp" width="1209" height="772" alt="Three stacked plots of steering input, yaw rate and lateral acceleration against time for four sources: linear model, Fiala model, VBOX measurement and Adams Car" loading="lazy" decoding="async"></div>
+<figcaption><b>Slalom at 90 km/h.</b> Steering input, yaw rate and lateral acceleration for the linear and Fiala bicycle models, the VBOX measurement and Adams Car, with the calibrated cornering stiffness.</figcaption>
+</figure>
+
+<figure class="fig">
+<div class="fig__frame"><img src="../assets/img/volvo-s90/validation-dlc-90.webp" width="1114" height="755" alt="Double lane change validation plots for four models against time" loading="lazy" decoding="async"></div>
+<figcaption><b>Double lane change at 90 km/h.</b> The sharp reversal at 4.9 s pushes the car close to its limit; Adams Car stays closest to the measurement.</figcaption>
+</figure>
+
+<figure class="fig">
+<div class="fig__frame"><img src="../assets/img/volvo-s90/sensitivity-oversteer.webp" width="1222" height="752" alt="Validation plots where the Fiala model flat-lines after spinning out" loading="lazy" decoding="async"></div>
+<figcaption><b>Oversteer test, 300 / 200 kN/rad.</b> The linear model overshoots and the Fiala model saturates its rear axle and spins out at 1.6 s.</figcaption>
+</figure>
+
+<figure class="fig">
+<div class="fig__frame"><img src="../assets/img/volvo-s90/adams-front-suspension.webp" width="1600" height="874" alt="Adams Car screenshot of a double wishbone front suspension with anti-roll bar" loading="lazy" decoding="async"></div>
+<figcaption><b>Front suspension in Adams Car.</b> Double wishbone with an anti-roll bar, built from the template and the S90 hard points.</figcaption>
+</figure>
+
+<figure class="fig">
+<div class="fig__frame"><img src="../assets/img/volvo-s90/adams-rear-suspension.webp" width="824" height="460" alt="Adams Car screenshot of a multi-link rear suspension" loading="lazy" decoding="async"></div>
+<figcaption><b>Rear suspension in Adams Car.</b> Multi-link with an anti-roll bar.</figcaption>
+</figure>
+
+<figure class="fig">
+<div class="fig__frame"><img src="../assets/img/volvo-s90/step-steer-roll.webp" width="745" height="846" alt="Three plots comparing Adams simulation and VBOX measurement in a step steer" loading="lazy" decoding="async"></div>
+<figcaption><b>Step steer at 50 km/h.</b> Yaw rate, lateral acceleration and roll rate, Adams Car against the measurement.</figcaption>
+</figure>
+
+<figure class="fig">
+<div class="fig__frame"><img src="../assets/img/volvo-s90/mass-yaw-80.webp" width="1579" height="602" alt="Yaw rate against time for four vehicle masses" loading="lazy" decoding="async"></div>
+<figcaption><b>Mass study, step steer at 80 km/h.</b> Yaw rate for the original mass, −100 kg, +100 kg and +200 kg.</figcaption>
+</figure>
+</div>
+<p class="muted" style="font-size:14px;margin-top:20px">Figures from the SD2225 Group 7 report.</p>
+
+<nav class="sheet-nav" aria-label="Other projects">
+<a href="indexing-jig.html"><span class="dir">PREVIOUS, SHEET 5</span><strong>Indexing jig</strong></a>
+<a class="next" href="steer-by-wire.html"><span class="dir">NEXT, SHEET 7</span><strong>Steer-by-wire actuator</strong></a>
+</nav>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-tb">
+<div><span class="k">NAME</span><span class="v">ROSHAN KARATHAN PRADEEP</span></div>
+<div><span class="k">TITLE</span><span class="v">VOLVO S90 VEHICLE MODEL</span></div>
+<div><span class="k">SHEET</span><span class="v tnum">6 OF 12</span></div>
+<div><span class="k">REV</span><span class="v">H</span></div>
+<div><span class="k">DATE</span><span class="v tnum">2026-11-04</span></div>
+<div><span class="k">CONTACT</span><span class="v"><a href="../index.html#contact">EMAIL</a>, <a href="https://www.linkedin.com/in/roshanaerodynamics" rel="me">LINKEDIN</a></span></div>
+</div>
+<p class="foot-small">© 2026 Roshan Karathan Pradeep. Drawn in Stockholm, born in Chennai.</p>
+</div>
+</footer>
+<script src="../assets/js/site.js?v=202611040336"></script>
+<script src="../assets/js/bicycle-sim.js?v=202611040336"></script>
+</body>
+</html>

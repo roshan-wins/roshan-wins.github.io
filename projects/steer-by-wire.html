@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en" data-family="telemetry">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Steer-by-wire actuator | Roshan Karathan Pradeep</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="A reduced Simulink model of a truck road-wheel actuator: motor, worm gear, recirculating-ball steering gear, pitman arm and drag link, with the friction and compliance that shape how torque reaches the wheels.">
+<meta name="color-scheme" content="light dark">
+<meta name="author" content="Roshan Karathan Pradeep">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Steer-by-wire actuator">
+<meta property="og:description" content="A reduced Simulink model of a truck road-wheel actuator: motor, worm gear, recirculating-ball steering gear, pitman arm and drag link, with the friction and compliance that shape how torque reaches the wheels.">
+<meta property="og:url" content="https://ringdingroshan.github.io/projects/steer-by-wire.html">
+<meta property="og:image" content="https://ringdingroshan.github.io/assets/img/og-card.png">
+<link rel="canonical" href="https://ringdingroshan.github.io/projects/steer-by-wire.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<script>try{var t=localStorage.getItem("rkp-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Semi+Condensed:wght@500;600&family=Didact+Gothic&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/site.css?v=202611040336">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="../index.html" aria-label="Roshan Karathan Pradeep, home">RKP</a>
+<nav class="nav" aria-label="Main">
+<a href="../index.html#work">Work</a>
+<a href="../index.html#about">About</a>
+<a href="../index.html#experience">Experience</a>
+<a href="../index.html#contact">Contact</a>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">
+<svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+<svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+</button>
+<a class="btn btn--ghost btn--small" href="../cv/Roshan_Karathan_Pradeep_CV.pdf">CV (PDF)</a>
+</div>
+</div>
+</header>
+<main id="main">
+
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html#work">Work</a><span aria-hidden="true">/</span><a href="../index.html#dynamics">Vehicle dynamics and control</a></nav>
+<header class="proj-head">
+<div>
+<h1 class="proj-title">Steer-by-wire actuator</h1>
+<p class="proj-lede">A reduced Simulink model of a truck road-wheel actuator: motor, worm gear, recirculating-ball steering gear, pitman arm and drag link, with the friction and compliance that shape how torque reaches the wheels.</p>
+</div>
+<dl class="meta-grid"><dt>Course</dt><dd>Vehicle Dynamics Project Course, part 1, KTH</dd><dt>When</dt><dd>Autumn 2026, in progress</dd><dt>Team</dt><dd>Two students on the mechanical system</dd><dt>Tools</dt><dd>MATLAB, Simulink</dd></dl>
+</header>
+
+<section class="panel chain" data-chain aria-labelledby="chain-title" style="margin-bottom:40px">
+<div class="panel-head">
+<h2 class="panel-title" id="chain-title">From motor to road wheel</h2>
+<button class="btn btn--ghost btn--small" type="button" data-chain-play aria-pressed="false">Play a steering sweep</button>
+</div>
+<p class="swipe-hint" aria-hidden="true">Swipe sideways to see the whole chain.</p>
+<div class="chain-scroll">
+<svg viewBox="0 0 1100 330" role="img" aria-label="Schematic of the actuator chain: motor, worm gear, recirculating-ball gear modelled as two inertias with a spring and damper, steering gear, pitman arm, drag link and road wheel">
+<text class="lbl" x="95" y="40" text-anchor="middle">Motor</text>
+<text class="lbl" x="270" y="40" text-anchor="middle">Worm gear</text>
+<text class="lbl" x="455" y="40" text-anchor="middle">Ball gear, two inertias</text>
+<text class="lbl" x="660" y="40" text-anchor="middle">Steering gear</text>
+<text class="lbl" x="930" y="40" text-anchor="middle">Road wheel, top view</text>
+<rect class="part" x="40" y="140" width="110" height="110" rx="6"/>
+<g data-rot="motor" data-c="95,195"><circle class="part" cx="95" cy="195" r="34"/><line class="mark" x1="95" y1="195" x2="95" y2="163"/></g>
+<text class="lbl-2" x="95" y="278" text-anchor="middle">limited to ±20 N·m</text>
+<line class="part-2" x1="150" y1="195" x2="215" y2="195"/>
+<rect class="part" x="215" y="182" width="110" height="26" rx="3"/>
+<g class="part-2"><line x1="225" y1="182" x2="235" y2="208"/><line x1="240" y1="182" x2="250" y2="208"/><line x1="255" y1="182" x2="265" y2="208"/><line x1="270" y1="182" x2="280" y2="208"/><line x1="285" y1="182" x2="295" y2="208"/><line x1="300" y1="182" x2="310" y2="208"/></g>
+<g data-rot="worm" data-c="270,122"><circle class="part" cx="270" cy="122" r="52"/><circle class="part-2" cx="270" cy="122" r="8"/><line class="mark" x1="270" y1="122" x2="270" y2="74"/></g>
+<text class="ratio" x="270" y="240" text-anchor="middle">i<tspan dy="4" font-size="11">w</tspan><tspan dy="-4"> = 20</tspan></text>
+<line class="part-2" x1="322" y1="122" x2="369" y2="122"/>
+<g data-rot="ja" data-c="395,122"><circle class="part" cx="395" cy="122" r="26"/><line class="mark" x1="395" y1="122" x2="395" y2="98"/></g>
+<polyline class="part-2" points="421,112 430,112 436,100 446,124 456,100 466,124 476,100 482,112 489,112" style="fill:none"/>
+<rect class="part" x="436" y="136" width="34" height="16" rx="2"/>
+<line class="part-2" x1="421" y1="144" x2="436" y2="144"/><line class="part-2" x1="470" y1="144" x2="489" y2="144"/>
+<g data-rot="jb" data-c="515,122"><circle class="part" cx="515" cy="122" r="26"/><line class="mark" x1="515" y1="122" x2="515" y2="98"/></g>
+<text class="lbl-2" x="395" y="172" text-anchor="middle">J<tspan dy="4" font-size="10">a</tspan></text>
+<text class="lbl-2" x="515" y="172" text-anchor="middle">J<tspan dy="4" font-size="10">b</tspan></text>
+<text class="lbl-2" x="455" y="88" text-anchor="middle">k<tspan dy="4" font-size="10">c</tspan><tspan dy="-4">, c</tspan><tspan dy="4" font-size="10">c</tspan></text>
+<line class="part-2" x1="541" y1="122" x2="626" y2="122"/>
+<g data-rot="sector" data-c="660,122"><circle class="part" cx="660" cy="122" r="34"/><line class="mark" x1="660" y1="122" x2="660" y2="90"/></g>
+<text class="ratio" x="728" y="110" text-anchor="start">i<tspan dy="4" font-size="11">s</tspan><tspan dy="-4"> = 20</tspan></text>
+<g data-rot="pitman" data-c="660,122"><line class="part" x1="660" y1="122" x2="660" y2="262" style="stroke-width:10;stroke-linecap:round"/><line x1="660" y1="122" x2="660" y2="262" style="stroke:var(--surface);stroke-width:5;stroke-linecap:round"/></g>
+<circle class="part" cx="660" cy="122" r="9"/>
+<line class="part" data-drag data-r="140" x1="660" y1="262" x2="930" y2="262" style="stroke-width:6;stroke-linecap:round"/>
+<g data-rot="road" data-c="930,122"><rect class="part" x="896" y="58" width="68" height="128" rx="16"/><line class="part-2" x1="930" y1="70" x2="930" y2="174" style="stroke-dasharray:6 5"/><line class="part" x1="930" y1="122" x2="930" y2="262" style="stroke-width:6;stroke-linecap:round"/></g>
+<circle class="part" cx="930" cy="122" r="7"/>
+<text class="lbl-2" x="795" y="290" text-anchor="middle">drag link</text>
+<text class="lbl-2" x="750" y="212" text-anchor="start">pitman arm</text>
+</svg>
+</div>
+<div class="sim" style="margin-top:12px">
+<div class="controls">
+<div class="control">
+<label for="chain-angle">Pitman arm angle <output id="chain-angle-out" for="chain-angle">+12.0°</output></label>
+<input type="range" id="chain-angle" min="-35" max="35" step="0.5" value="12">
+</div>
+<div class="control">
+<label for="chain-torque">Motor torque command <output id="chain-torque-out" for="chain-torque">20.0 N·m</output></label>
+<input type="range" id="chain-torque" min="0" max="25" step="0.5" value="20">
+<span class="hint">The model saturates the motor at its peak torque of ±20 N·m.</span>
+</div>
+</div>
+<div class="table-scroll">
+<table class="stage-table">
+<thead><tr><th scope="col">Stage</th><th scope="col">Angle</th><th scope="col">Torque, friction left out</th></tr></thead>
+<tbody>
+<tr><td>Motor shaft</td><td><span data-cell="m-ang">–</span><br><span class="muted" data-cell="m-rev">–</span></td><td data-cell="m-trq">–</td></tr>
+<tr><td>Ball-gear shaft, after the worm</td><td data-cell="b-ang">–</td><td data-cell="b-trq">–</td></tr>
+<tr><td>Pitman arm</td><td data-cell="p-ang">–</td><td data-cell="p-trq">–</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<div class="results"><div class="result"><span class="result__value">400 : 1</span><span class="result__label">overall reduction, worm gear times steering gear</span></div><div class="result"><span class="result__value">8000 N·m</span><span class="result__label">ideal peak torque at the pitman arm from a 20 N·m motor</span></div></div>
+
+<div class="story">
+<div class="prose">
+<h2>What the model is for</h2>
+<p>In a steer-by-wire truck there is no steering column: a road-wheel actuator turns the wheels on command. To design its controller you need a plant model that keeps what governs how torque and angle travel from the motor to the wheels, and nothing else. Two of us are responsible for that mechanical model, as part 1 of the Vehicle Dynamics Project Course at KTH.</p>
+<h2>The chain, reduced</h2>
+<ul>
+<li><b>Motor:</b> an ideal torque source, saturated at ±20 N·m. No rotor inertia, back EMF or electrical lag yet.</li>
+<li><b>Worm gear:</b> an ideal 20 : 1 reduction, with friction <i>T</i><sub>f1</sub> taken off the motor torque before the reduction.</li>
+<li><b>Recirculating-ball gear:</b> two inertias, <i>J</i><sub>a</sub> on the gear side and <i>J</i><sub>b</sub> for the ball nut and pitman arm, coupled by a torsional spring and damper. Friction <i>T</i><sub>f2</sub> acts on <i>J</i><sub>b</sub> only, the mass whose speed drives it.</li>
+<li><b>Steering gear and pitman arm:</b> another ideal 20 : 1 reduction, so 400 : 1 overall and 8000 N·m at the pitman arm in the ideal case.</li>
+<li><b>Drag link and wheels:</b> a third compliant element and one equivalent inertia, loaded by the road torque.</li>
+</ul>
+<p>Every inertia, stiffness and damping value is expressed on the shaft where it acts; the pitman-arm inertia enters <i>J</i><sub>b</sub> as <i>J</i><sub>pm</sub>/<i>i</i><sub>s</sub>².</p>
+<h2>Two equations that do a lot of work</h2>
+<p>Without friction and load, the ball-gear pair is a rigid body plus one oscillation:</p>
+<p class="formula"><i>ω</i><sub>n</sub> = √( <i>k</i><sub>c</sub> (<i>J</i><sub>a</sub> + <i>J</i><sub>b</sub>) / (<i>J</i><sub>a</sub> <i>J</i><sub>b</sub>) ),&nbsp;&nbsp; <i>ζ</i> = (<i>c</i><sub>c</sub> / 2) √( (<i>J</i><sub>a</sub> + <i>J</i><sub>b</sub>) / (<i>k</i><sub>c</sub> <i>J</i><sub>a</sub> <i>J</i><sub>b</sub>) )</p>
+<p>Both contacts use the same smooth friction law, Coulomb plus a load-dependent loss plus viscous drag, with a tanh so it always opposes motion:</p>
+<p class="formula"><i>T</i><sub>f</sub> = [ <i>T</i><sub>C</sub> + (1 − <i>η</i>) |<i>T</i><sub>thru</sub>| ] tanh(<i>ω</i> / <i>ω</i><sub>ε</sub>) + <i>b ω</i></p>
+<h2>Checks so far</h2>
+<p>In the recorded run, the ball-nut friction <i>T</i><sub>f2</sub> stayed at about 0.6 to 0.7 N·m while the shaft turned at up to about 3 rad/s. It fell to about zero as the speed approached zero and reversed sign with the speed, as it should.</p>
+<h2>Known limits</h2>
+<ul>
+<li>The ideal motor makes high-frequency bandwidth look better than it is.</li>
+<li>No backlash, end stops or tooth elasticity in the gears.</li>
+<li>No stiction or Stribeck effect, so the mechanism can creep under a small load.</li>
+<li>The wheel angle is an equivalent angle; its mapping to the real wheel angle and the truck's parameters are still open.</li>
+</ul>
+</div>
+<aside class="aside-stack">
+<div class="aside-block">
+<h2>STATUS</h2>
+<p>In progress, autumn 2026. Inertia, stiffness, damping and friction values are still being identified.</p>
+</div>
+<div class="aside-block">
+<h2>COURSE</h2>
+<p>Vehicle Dynamics Project Course, part 1, KTH. I work on the road-wheel actuator's mechanical system with one classmate.</p>
+</div>
+</aside>
+</div>
+
+<div class="figure-grid">
+
+<figure class="fig fig--wide">
+<div class="fig__frame"><img src="../assets/img/steer-by-wire/simulink-rwa-plant.webp" width="1600" height="548" alt="Simulink block diagram of the road-wheel actuator plant" loading="lazy" decoding="async"></div>
+<figcaption><b>The complete plant in Simulink.</b> Motor and worm gear, the two-inertia ball gear, the steering-gear reduction and the drag-link dynamics, with the road load fed back.</figcaption>
+</figure>
+
+<figure class="fig">
+<div class="fig__frame"><img src="../assets/img/steer-by-wire/simulink-two-inertia.webp" width="1521" height="462" alt="Simulink subsystem of the two-inertia recirculating-ball gear" loading="lazy" decoding="async"></div>
+<figcaption><b>Two-inertia ball-gear subsystem</b> with the coupling spring and damper and the friction torque on the nut.</figcaption>
+</figure>
+
+<figure class="fig">
+<div class="fig__frame"><img src="../assets/img/steer-by-wire/simulink-drag-link.webp" width="1542" height="502" alt="Simulink subsystem of the drag link" loading="lazy" decoding="async"></div>
+<figcaption><b>Drag-link subsystem:</b> spring-damper link, equivalent wheel inertia and road load.</figcaption>
+</figure>
+</div>
+
+<nav class="sheet-nav" aria-label="Other projects">
+<a href="volvo-s90.html"><span class="dir">PREVIOUS, SHEET 6</span><strong>Volvo S90 vehicle model</strong></a>
+<a class="next" href="nutrunner.html"><span class="dir">NEXT, SHEET 8</span><strong>Nutrunner modelling and control</strong></a>
+</nav>
+</div>
+
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-tb">
+<div><span class="k">NAME</span><span class="v">ROSHAN KARATHAN PRADEEP</span></div>
+<div><span class="k">TITLE</span><span class="v">STEER-BY-WIRE ACTUATOR</span></div>
+<div><span class="k">SHEET</span><span class="v tnum">7 OF 12</span></div>
+<div><span class="k">REV</span><span class="v">H</span></div>
+<div><span class="k">DATE</span><span class="v tnum">2026-11-04</span></div>
+<div><span class="k">CONTACT</span><span class="v"><a href="../index.html#contact">EMAIL</a>, <a href="https://www.linkedin.com/in/roshanaerodynamics" rel="me">LINKEDIN</a></span></div>
+</div>
+<p class="foot-small">© 2026 Roshan Karathan Pradeep. Drawn in Stockholm, born in Chennai.</p>
+</div>
+</footer>
+<script src="../assets/js/site.js?v=202611040336"></script>
+<script src="../assets/js/sbw-chain.js?v=202611040336"></script>
+</body>
+</html>
