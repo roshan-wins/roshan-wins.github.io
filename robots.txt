@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://ringdingroshan.github.io/sitemap.xml
+Sitemap: https://roshan-wins.github.io/sitemap.xml

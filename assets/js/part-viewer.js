@@ -46,15 +46,22 @@
     "varying vec3 v_n;",
     "void main(){ vec3 p = u_lo + a_p * (u_hi - u_lo) - u_c + u_off; v_n = a_n; gl_Position = u_mvp * vec4(p, 1.0); }"
   ].join("\n");
+  // shaded: sky/ground hemisphere light, a key and a fill light, a soft specular and a rim,
+  // close to how a machined part reads in a studio render; u_flat = 1 gives the paper colour
   var MESH_FS = [
     "precision mediump float;",
     "uniform vec3 u_col; uniform vec3 u_l1; uniform vec3 u_l2; uniform vec3 u_view; uniform float u_flat; uniform float u_a;",
     "varying vec3 v_n;",
     "void main(){",
     "  vec3 n = normalize(v_n); if (dot(n, u_view) < 0.0) n = -n;",
-    "  float d = 0.62 * max(dot(n, u_l1), 0.0) + 0.22 * max(dot(n, u_l2), 0.0) + 0.38;",
-    "  float rim = pow(1.0 - max(dot(n, u_view), 0.0), 3.0) * 0.18;",
-    "  vec3 c = mix(u_col * d + rim, u_col, u_flat);",
+    "  float hemi = 0.5 + 0.5 * n.y;",
+    "  vec3 amb = u_col * mix(0.42, 0.66, hemi);",
+    "  float d1 = max(dot(n, u_l1), 0.0), d2 = max(dot(n, u_l2), 0.0);",
+    "  vec3 h = normalize(u_l1 + u_view);",
+    "  float sp = pow(max(dot(n, h), 0.0), 42.0) * 0.32;",
+    "  float rim = pow(1.0 - max(dot(n, u_view), 0.0), 3.0) * 0.16;",
+    "  vec3 c = amb + u_col * (0.5 * d1 + 0.16 * d2) + vec3(sp + rim);",
+    "  c = mix(c, u_col, u_flat);",
     "  gl_FragColor = vec4(c * u_a, u_a);",
     "}"
   ].join("\n");
@@ -102,8 +109,11 @@
     iso: { yaw: -0.72, pitch: 0.42 }, front: { yaw: -Math.PI / 2, pitch: 0 },
     top: { yaw: -Math.PI / 2, pitch: Math.PI / 2 - 0.0001 }, side: { yaw: 0, pitch: 0 }
   };
-  var S = { yaw: VIEWS.iso.yaw, pitch: VIEWS.iso.pitch, zoom: 1, explode: 0, style: "lines", hover: -1, ready: false };
-  var anim = null, spin = !reduce, visible = true, dirty = true;
+  var S = { yaw: VIEWS.iso.yaw, pitch: VIEWS.iso.pitch, zoom: 1, explode: 0, hover: -1, ready: false,
+    style: root.getAttribute("data-style") === "shaded" ? "shaded" : "lines" };
+  root.setAttribute("data-style-now", S.style);
+  var anim = null, spin = !reduce, visible = true, dirty = true, touched = false, introDone = false;
+  var ex = root.querySelector("[data-explode]");
   var meta = null, parts = [];
   var colours = {};
 
@@ -114,9 +124,10 @@
       var h = c.fillStyle; if (h[0] === "#") return [parseInt(h.slice(1, 3), 16) / 255, parseInt(h.slice(3, 5), 16) / 255, parseInt(h.slice(5, 7), 16) / 255];
       var m = h.match(/[\d.]+/g); return [m[0] / 255, m[1] / 255, m[2] / 255];
     }
+    var pa = cs.getPropertyValue("--viewer-part-a").trim(), pb = cs.getPropertyValue("--viewer-part-b").trim();
     colours = { bg: rgb(cs.getPropertyValue("--viewer-bg")), ink: rgb(cs.getPropertyValue("--viewer-ink")),
       ink2: rgb(cs.getPropertyValue("--viewer-ink-2")), acc: rgb(cs.getPropertyValue("--viewer-acc")),
-      metal: rgb(cs.getPropertyValue("--viewer-metal")), metal2: rgb(cs.getPropertyValue("--viewer-metal-2")) };
+      metal: rgb(pa || cs.getPropertyValue("--viewer-metal")), metal2: rgb(pb || cs.getPropertyValue("--viewer-metal-2")) };
     dirty = true;
   }
 
@@ -289,10 +300,13 @@
     t = t || 0;
     var dt = Math.min(0.05, (t - last) / 1000 || 0); last = t;
     if (anim) {
-      anim.t = Math.min(1, anim.t + dt / anim.dur); var e = 1 - Math.pow(1 - anim.t, 3);
+      anim.t = Math.min(1, anim.t + dt / anim.dur); var e = anim.ease ? anim.ease(anim.t) : 1 - Math.pow(1 - anim.t, 3);
       for (var k in anim.to) S[k] = anim.from[k] + (anim.to[k] - anim.from[k]) * e;
+      if (anim.to.explode !== undefined && ex) ex.value = Math.round(S.explode * 100);
+      if (anim.spin && visible) S.yaw += dt * 0.25;
       if (anim.t >= 1) anim = null; dirty = true;
     } else if (spin && visible && S.ready) { S.yaw += dt * 0.25; dirty = true; }
+    if (!introDone && S.ready && visible && !reduce && !touched && !anim) intro();
     if (dirty && S.ready && visible) { render(); dirty = false; }
     requestAnimationFrame(loop);
   }
@@ -304,7 +318,18 @@
     if (reduce) { for (var j in to) S[j] = to[j]; dirty = true; return; }
     anim = { from: from, to: to, t: 0, dur: dur || 0.7 };
   }
-  function stopSpin() { spin = false; }
+  function stopSpin() { spin = false; touched = true; introDone = true; }
+  /* first time the part is on screen: pull the three parts apart and put them back, once,
+     while it keeps turning, so it is clear this is a live assembly and not a picture */
+  var introTimer = 0;
+  function intro() {
+    introDone = true;
+    introTimer = setTimeout(function () {
+      if (touched) return;
+      var wave = function (t) { var s = Math.sin(Math.PI * Math.min(1, t)); return s * s * (3 - 2 * s); };
+      anim = { from: { explode: 0 }, to: { explode: 0.62 }, t: 0, dur: 3.4, ease: wave, spin: spin };
+    }, 900);
+  }
 
   /* ---------- input ---------- */
   var drag = null, pinch = null, pointers = {};
@@ -396,14 +421,13 @@
       root.querySelectorAll("[data-view]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
     });
   });
-  root.querySelectorAll("[data-style]").forEach(function (b) {
+  root.querySelectorAll("button[data-style]").forEach(function (b) {
     b.addEventListener("click", function () {
-      S.style = b.getAttribute("data-style"); dirty = true;
-      root.querySelectorAll("[data-style]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      S.style = b.getAttribute("data-style"); dirty = true; root.setAttribute("data-style-now", S.style);
+      root.querySelectorAll("button[data-style]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
     });
   });
-  var ex = root.querySelector("[data-explode]");
-  if (ex) ex.addEventListener("input", function () { S.explode = ex.value / 100; stopSpin(); dirty = true; });
+  if (ex) ex.addEventListener("input", function () { anim = null; S.explode = ex.value / 100; stopSpin(); dirty = true; });
   var spinBtn = root.querySelector("[data-spin]");
   if (spinBtn) {
     if (reduce) spinBtn.hidden = true;
@@ -413,6 +437,14 @@
   function fillTable() {
     var tb = root.querySelector("[data-viewer-parts]");
     if (!tb) return;
+    if (tb.tagName === "UL" || tb.tagName === "OL") {          // chips written by the page: just wire them up
+      Array.prototype.forEach.call(tb.children, function (li, i) {
+        li.addEventListener("mouseenter", function () { setHover(i); });
+        li.addEventListener("mouseleave", function () { setHover(-1); });
+        rows.push(li);
+      });
+      return;
+    }
     tb.innerHTML = "";
     meta.parts.forEach(function (pt, i) {
       var tr = document.createElement("tr");
