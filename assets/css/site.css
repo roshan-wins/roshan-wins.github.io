@@ -1199,3 +1199,18 @@ select { font: inherit; font-size: 15px; min-height: 44px; padding: 0 10px; bord
 }
 /* RCV-Dynamic page: the parts Roshan detail-designed, in the design colour (matches the parts list) */
 .dwg-hero .dwg .mine { fill: var(--c-design-tint); stroke: var(--c-design-ink); }
+
+/* ---------- round 3: rocker caption, rocker on the RCV page, aero side view ---------- */
+.hero2__cap { display: flex; flex-direction: column; gap: 6px; }
+.hero2__part { margin: 0; font-size: 15px; line-height: 1.5; color: var(--body-2); max-width: 46em; }
+.hero2__part b { color: var(--ink); }
+.hero2__part a { font-weight: 700; white-space: nowrap; }
+.rocker-sec { display: grid; gap: 24px 48px; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: center; margin-bottom: 56px; }
+@media (max-width: 900px) { .rocker-sec { grid-template-columns: minmax(0, 1fr); } }
+.rocker-sec__text { display: flex; flex-direction: column; gap: 12px; }
+.rocker-sec__text p { margin: 0; }
+.rocker-sec__text .detail__kicker { margin: 0; }
+.aero-fig { margin: 0 0 40px; display: flex; flex-direction: column; gap: 12px; }
+.aero-fig .dwg { width: 100%; height: auto; }
+.aero-fig .dwg .mine { fill: var(--c-flow-tint); stroke: none; }
+.aero-fig .dwg .mine-line { stroke: var(--c-flow-ink); fill: none; }

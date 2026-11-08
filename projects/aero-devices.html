@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Didact+Gothic&amp;display=swap">
-<link rel="stylesheet" href="../assets/css/site.css?v=202611041844">
+<link rel="stylesheet" href="../assets/css/site.css?v=202611082237">
 
 </head>
 <body>
@@ -54,13 +54,9 @@
 <dl class="meta-grid"><dt>Course</dt><dd>SG2211 Vehicle Aerodynamics, KTH</dd><dt>When</dt><dd>August 2026</dd><dt>Team</dt><dd>Group 10, three students</dd><dt>My part</dt><dd>The rear diffuser</dd><dt>Tools</dt><dd>SolidWorks, CFD</dd></dl>
 </header>
 
-<figure class="flow-hero" style="margin:0 0 40px">
-<canvas data-flow="../assets/data/naca2412-a4.json" data-mirror="true" role="img" aria-label="Streamlines around an inverted airfoil, the working principle of a rear wing, coloured by local speed"></canvas>
-<p class="view-pending" data-flow-fallback hidden>The flow field could not load.</p>
-<figcaption class="flow-caption">
-<span>A rear wing is an airfoil turned upside down: the faster flow under it pulls the car down. Inviscid flow around an inverted NACA 2412, computed for this page.</span>
-<span class="flow-legend"><span><i class="c"></i>slower than the free stream</span><span><i class="w"></i>faster</span></span>
-</figcaption>
+<figure class="aero-fig">
+<svg class="dwg" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Side view of a car, schematic: 1 canard, 2 splitter and flat floor, 3 side skirt, 4 rear diffuser, 5 rear wing, with the fast flow under the floor slowing in the diffuser"><defs><pattern id="hx-aero" patternUnits="userSpaceOnUse" width="12" height="12" patternTransform="rotate(45)"><line class="t" x1="0" y1="0" x2="0" y2="12" stroke-width="1.4"/></pattern></defs><line class="m" x1="10" y1="330" x2="990" y2="330" stroke-width="2.4"/><rect x="10" y="330" width="980" height="12" fill="url(#hx-aero)"/><line class="t" x1="6" y1="204" x2="64" y2="204" stroke-width="1.6"/><polygon class="sd" points="72,204 60,199 60,209"/><text class="tx2" x="8" y="194" font-size="13" letter-spacing="1">AIR</text><polygon class="mine" points="775.0,300.0 935.0,279.0 935.0,300.0"/><polygon class="m" points="92.0,300.0 80.0,282.0 88.0,262.0 180.0,246.0 380.0,228.0 480.0,172.0 640.0,166.0 820.0,214.0 935.0,222.0 945.0,242.0 935.0,279.0 775.0,300.0 190.0,300.0" stroke-width="2.4" stroke-linejoin="round" fill="none"/><polyline class="t" points="404.0,226.0 488.0,181.0 632.0,176.0 794.0,212.0" stroke-width="1.3" fill="none" stroke-linejoin="round"/><line class="mine-line" x1="775" y1="300" x2="935" y2="279" stroke-width="4" stroke-linecap="round"/><line class="m" x1="68" y1="303" x2="196" y2="303" stroke-width="4" stroke-linecap="round"/><rect class="m f" x="312" y="300" width="370" height="10" stroke-width="1.6"/><polygon class="m f" points="94.0,268.0 134.0,258.0 137.0,264.0 96.0,275.0" stroke-width="1.6" stroke-linejoin="round"/><line class="m" x1="898" y1="160" x2="898" y2="219" stroke-width="2"/><path class="m f" d="M840,151 C870,143 930,143 962,149 C930,157 876,168 840,151 Z" stroke-width="2" stroke-linejoin="round"/><circle class="m f" cx="265" cy="290" r="40" stroke-width="2.4"/><circle class="t" cx="265" cy="290" r="25" stroke-width="1.4" fill="none"/><circle class="m" cx="265" cy="290" r="5" stroke-width="1.6" fill="none"/><circle class="m f" cx="730" cy="290" r="40" stroke-width="2.4"/><circle class="t" cx="730" cy="290" r="25" stroke-width="1.4" fill="none"/><circle class="m" cx="730" cy="290" r="5" stroke-width="1.6" fill="none"/><line class="t" x1="326" y1="320" x2="652" y2="320" stroke-width="1.6"/><polygon class="sd" points="662,320 650,315 650,325"/><line class="t" x1="782" y1="322" x2="916" y2="318" stroke-width="1.6"/><polygon class="sd" points="926.0,317.7 916.1,323.0 915.9,313.0"/><line class="t" x1="782" y1="312" x2="916" y2="305" stroke-width="1.6"/><polygon class="sd" points="926.0,304.5 916.3,310.0 915.7,300.0"/><line class="t" x1="775" y1="300" x2="944" y2="300" stroke-width="1"/><path class="m" d="M900,300 A125 125 0 0 0 898.9,283.7" stroke-width="1.4" fill="none"/><text class="tx" x="907" y="298" font-size="15">θ</text><line class="m" x1="210" y1="303" x2="210" y2="330" stroke-width="1.2"/><polygon class="s" points="210,303 206,311 214,311"/><polygon class="s" points="210,330 206,322 214,322"/><text class="tx" x="217" y="321" font-size="16" font-style="italic">h</text><line class="t" x1="76.1" y1="165.9" x2="114.0" y2="264.0" stroke-width="1.4"/><circle class="sd" cx="114.0" cy="264.0" r="3"/><circle class="m f" cx="70" cy="150" r="17" stroke-width="1.8"/><text class="tx" x="70" y="156" font-size="18" text-anchor="middle">1</text><line class="t" x1="59.9" y1="361.0" x2="90.0" y2="304.0" stroke-width="1.4"/><circle class="sd" cx="90.0" cy="304.0" r="3"/><circle class="m f" cx="52" cy="376" r="17" stroke-width="1.8"/><text class="tx" x="52" y="382" font-size="18" text-anchor="middle">2</text><line class="t" x1="500.0" y1="363.0" x2="500.0" y2="310.0" stroke-width="1.4"/><circle class="sd" cx="500.0" cy="310.0" r="3"/><circle class="m f" cx="500" cy="380" r="17" stroke-width="1.8"/><text class="tx" x="500" y="386" font-size="18" text-anchor="middle">3</text><line class="t" x1="842.0" y1="363.0" x2="842.0" y2="296.2" stroke-width="1.4"/><circle class="sd" cx="842.0" cy="296.2" r="3"/><circle class="m f" cx="842" cy="380" r="17" stroke-width="1.8"/><text class="tx" x="842" y="386" font-size="18" text-anchor="middle">4</text><line class="t" x1="964.0" y1="119.0" x2="948.0" y2="149.0" stroke-width="1.4"/><circle class="sd" cx="948.0" cy="149.0" r="3"/><circle class="m f" cx="972" cy="104" r="17" stroke-width="1.8"/><text class="tx" x="972" y="110" font-size="18" text-anchor="middle">5</text></svg>
+<figcaption class="flow-caption"><span><b>Four devices, one floor.</b> 1 canard, 2 splitter and flat floor, 3 side skirt, 4 rear diffuser (my part, in colour), 5 rear wing; h is the ride height. Under the floor the air runs fast and at low pressure. The diffuser lets it slow down and recover pressure, and much past the usual 7–10° of angle θ the flow separates. A generic car, schematic and not to scale.</span></figcaption>
 </figure>
 
 
@@ -118,15 +114,15 @@
 <div class="foot-tb">
 <div><span class="k">NAME</span><span class="v">ROSHAN KARATHAN PRADEEP</span></div>
 <div><span class="k">TITLE</span><span class="v">AERO DEVICES FOR HIGH-PERFORMANCE CARS</span></div>
-<div><span class="k">SHEET</span><span class="v tnum">10 OF 13</span></div>
+<div><span class="k">SHEET</span><span class="v tnum">10 OF 12</span></div>
 <div><span class="k">REV</span><span class="v">H</span></div>
-<div><span class="k">DATE</span><span class="v tnum">2026-11-04</span></div>
+<div><span class="k">DATE</span><span class="v tnum">2026-11-08</span></div>
 <div><span class="k">CONTACT</span><span class="v"><a href="../index.html#contact">EMAIL</a>, <a href="https://www.linkedin.com/in/roshanaerodynamics" rel="me">LINKEDIN</a></span></div>
 </div>
 <p class="foot-small">© 2026 Roshan Karathan Pradeep. Drawn in Stockholm, born in Chennai.</p>
 </div>
 </footer>
-<script src="../assets/js/site.js?v=202611041844"></script>
-<script src="../assets/js/flow-field.js?v=202611041844"></script>
+<script src="../assets/js/site.js?v=202611082237"></script>
+
 </body>
 </html>

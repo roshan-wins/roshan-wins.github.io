@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700&family=Didact+Gothic&amp;display=swap">
-<link rel="stylesheet" href="../assets/css/site.css?v=202611041844">
+<link rel="stylesheet" href="../assets/css/site.css?v=202611082237">
 
 </head>
 <body>
@@ -51,7 +51,7 @@
 <h1 class="proj-title">RCV-Dynamic suspension</h1>
 <p class="proj-lede">Detail design of the subframe, A-arms and aluminium suspension parts for RCV-Dynamic, a KTH research vehicle with a 700 N·m motor in every wheel.</p>
 </div>
-<dl class="meta-grid"><dt>Role</dt><dd>Research assistant (amanuens), detail design lead for these parts</dd><dt>Where</dt><dd>KTH Royal Institute of Technology, Stockholm</dd><dt>When</dt><dd>January–August 2026</dd><dt>Tools</dt><dd>SolidWorks, GD&amp;T, DFM, wire EDM suppliers</dd></dl>
+<dl class="meta-grid"><dt>Role</dt><dd>Research assistant (amanuens), detail design lead for these parts</dd><dt>Where</dt><dd>KTH Royal Institute of Technology, Stockholm</dd><dt>When</dt><dd>January–August 2026</dd><dt>Tools</dt><dd>SolidWorks, GD&amp;T, DFM for wire EDM</dd><dt>Status</dt><dd>Drawings released, parts not manufactured yet</dd></dl>
 </header>
 
 <div class="sheet" style="margin-bottom:40px">
@@ -99,6 +99,41 @@
 
 
 
+<section class="rocker-sec" aria-labelledby="rocker-title">
+<div class="rocker-sec__view"><div class="viewer viewer--hero" data-viewer data-src="../assets/model/rocker" data-style="shaded">
+<div class="viewer__stage">
+<img class="viewer__poster viewer__poster--light" src="../assets/model/rocker-light.webp" width="1280" height="800" alt="Line drawing of the suspension rocker: two side plates with lightening pockets either side of a centre body" loading="lazy" decoding="async">
+<img class="viewer__poster viewer__poster--dark" src="../assets/model/rocker-dark.webp" width="1280" height="800" alt="" loading="lazy" decoding="async">
+<canvas tabindex="0" aria-label="3D model of the suspension rocker. Drag to turn it, or use the arrow keys."></canvas>
+<p class="viewer__hud viewer__live" data-viewer-angles aria-hidden="true">AZ 0°  EL 0°</p>
+<p class="viewer__scale viewer__live" aria-hidden="true"><span class="viewer__bar" data-viewer-bar></span><span data-viewer-bar-text>100 mm</span></p>
+<p class="viewer__hint viewer__live" aria-hidden="true">DRAG TO TURN · DOUBLE-CLICK TO RESET</p>
+</div>
+<div class="viewer__tools viewer__live">
+<div class="btn-seg" role="group" aria-label="View">
+<button type="button" data-view="iso" aria-pressed="true">ISO</button><button type="button" data-view="front" aria-pressed="false">FRONT</button><button type="button" data-view="top" aria-pressed="false">TOP</button><button type="button" data-view="side" aria-pressed="false">SIDE</button>
+</div>
+<div class="btn-seg" role="group" aria-label="Style">
+<button type="button" data-style="lines" aria-pressed="false">LINES</button><button type="button" data-style="shaded" aria-pressed="true">SHADED</button>
+</div>
+<label class="viewer__explode"><span>PULL APART</span><input type="range" min="0" max="100" value="0" data-explode aria-label="Pull the parts apart"></label>
+<div class="btn-seg viewer__spin"><button type="button" data-spin aria-pressed="true">TURN</button></div>
+</div>
+<ul class="viewer__parts viewer__live" data-viewer-parts aria-label="Parts in the assembly">
+<li data-side="a"><span class="sw" aria-hidden="true"></span>1 SIDE PLATE<span class="dim tnum">329 cm³</span></li>
+<li data-side="b"><span class="sw" aria-hidden="true"></span>2 CENTRE BODY<span class="dim tnum">559 cm³</span></li>
+<li data-side="a"><span class="sw" aria-hidden="true"></span>3 SIDE PLATE<span class="dim tnum">333 cm³</span></li>
+</ul>
+</div></div>
+<div class="rocker-sec__text">
+<p class="detail__kicker">DETAIL A · DESIGNED, NOT MANUFACTURED YET</p>
+<h2 class="detail__title" id="rocker-title">The suspension rocker</h2>
+<p>One of the suspension parts I designed for RCV-Dynamic. I kept it simple and added lightness, and shaped it so wire-cut EDM can cut both its main contours and its topology-optimised pockets.</p>
+<p class="muted">Drag to turn it, pull the three parts apart, or switch between the shaded view and a line drawing.</p>
+<p class="caption-letter">VIEW A. FROM MY SOLIDWORKS MODEL: TWO SIDE PLATES AND A CENTRE BODY. ORTHOGRAPHIC, SO THE SCALE BAR IS TRUE.</p>
+</div>
+</section>
+
 <div class="story">
 <div class="prose">
 <h2>The vehicle</h2>
@@ -117,14 +152,10 @@
 <aside class="aside-stack">
 <div class="aside-block">
 <h2>TOOLS</h2>
-<ul><li>SolidWorks, parametric part and assembly design</li><li>GD&amp;T, datum schemes and tolerance stacks</li><li>Wire EDM and machining suppliers</li><li>Prototype build and inspection</li></ul>
+<ul><li>SolidWorks, parametric part and assembly design</li><li>GD&amp;T, datum schemes and tolerance stacks</li><li>Design for wire EDM and machining</li><li>Prototype build and inspection</li></ul>
 </div>
 
 </aside>
-</div>
-
-<div class="figure-grid">
-
 </div>
 
 <nav class="sheet-nav" aria-label="Other projects">
@@ -139,15 +170,15 @@
 <div class="foot-tb">
 <div><span class="k">NAME</span><span class="v">ROSHAN KARATHAN PRADEEP</span></div>
 <div><span class="k">TITLE</span><span class="v">RCV-DYNAMIC SUSPENSION</span></div>
-<div><span class="k">SHEET</span><span class="v tnum">2 OF 13</span></div>
+<div><span class="k">SHEET</span><span class="v tnum">2 OF 12</span></div>
 <div><span class="k">REV</span><span class="v">H</span></div>
-<div><span class="k">DATE</span><span class="v tnum">2026-11-04</span></div>
+<div><span class="k">DATE</span><span class="v tnum">2026-11-08</span></div>
 <div><span class="k">CONTACT</span><span class="v"><a href="../index.html#contact">EMAIL</a>, <a href="https://www.linkedin.com/in/roshanaerodynamics" rel="me">LINKEDIN</a></span></div>
 </div>
 <p class="foot-small">© 2026 Roshan Karathan Pradeep. Drawn in Stockholm, born in Chennai.</p>
 </div>
 </footer>
-<script src="../assets/js/site.js?v=202611041844"></script>
-
+<script src="../assets/js/site.js?v=202611082237"></script>
+<script src="../assets/js/part-viewer.js?v=202611082237" defer></script>
 </body>
 </html>

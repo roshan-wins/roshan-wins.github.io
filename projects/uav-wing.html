@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>UAV wing optimization | Roshan Karathan Pradeep</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Parametric external-aerodynamics CFD on UAV wing geometries, with NSGA-II multi-objective optimization to pick the aerodynamic attachments that balance drag against efficiency.">
+<meta name="description" content="Parametric external-aerodynamics CFD on UAV wing geometries, with NSGA-II multi-objective optimization to pick the aerodynamic attachments that balance drag against efficiency, and a NACA 2412 airfoil tested with Gurney flaps and serrated edges.">
 <meta name="color-scheme" content="light dark">
 <meta name="author" content="Roshan Karathan Pradeep">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UAV wing optimization">
-<meta property="og:description" content="Parametric external-aerodynamics CFD on UAV wing geometries, with NSGA-II multi-objective optimization to pick the aerodynamic attachments that balance drag against efficiency.">
+<meta property="og:description" content="Parametric external-aerodynamics CFD on UAV wing geometries, with NSGA-II multi-objective optimization to pick the aerodynamic attachments that balance drag against efficiency, and a NACA 2412 airfoil tested with Gurney flaps and serrated edges.">
 <meta property="og:url" content="https://roshan-wins.github.io/projects/uav-wing.html">
 <meta property="og:image" content="https://roshan-wins.github.io/assets/img/og-card.png">
 <link rel="canonical" href="https://roshan-wins.github.io/projects/uav-wing.html">
@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Didact+Gothic&amp;display=swap">
-<link rel="stylesheet" href="../assets/css/site.css?v=202611041844">
+<link rel="stylesheet" href="../assets/css/site.css?v=202611082237">
 
 </head>
 <body>
@@ -49,9 +49,9 @@
 <header class="proj-head">
 <div>
 <h1 class="proj-title">UAV wing optimization</h1>
-<p class="proj-lede">Parametric external-aerodynamics CFD on UAV wing geometries, with NSGA-II multi-objective optimization to pick the aerodynamic attachments that balance drag against efficiency.</p>
+<p class="proj-lede">Parametric external-aerodynamics CFD on UAV wing geometries, with NSGA-II multi-objective optimization to pick the aerodynamic attachments that balance drag against efficiency, and a NACA 2412 airfoil tested with Gurney flaps and serrated edges.</p>
 </div>
-<dl class="meta-grid"><dt>Role</dt><dd>CFD engineer intern</dd><dt>Where</dt><dd>Reude Technologies</dd><dt>When</dt><dd>January–May 2024</dd><dt>Tools</dt><dd>CFD, NSGA-II</dd></dl>
+<dl class="meta-grid"><dt>Role</dt><dd>CFD engineer intern</dd><dt>Where</dt><dd>Reude Technologies</dd><dt>When</dt><dd>January–May 2024</dd><dt>Tools</dt><dd>Ansys Fluent, NSGA-II</dd></dl>
 </header>
 
 <figure style="margin:0 0 40px;display:flex;flex-direction:column;gap:10px">
@@ -85,22 +85,38 @@
 </ul>
 <h2>Result</h2>
 <p>The final configuration was chosen from the Pareto front. Its geometry and numbers are confidential, so the chart above shows the method, not the data.</p>
+<h2 id="naca">NACA 2412 with Gurney flaps and serrations</h2>
+<p>Alongside the wing work, I tested a standard NACA 2412 airfoil in CFD with attachments such as Gurney flaps and serrated trailing edges, to see what each one does and where it is worth using. A Gurney flap is a short tab at the trailing edge, square to the pressure side, usually a percent or two of the chord tall; it turns the flow at the trailing edge and adds lift for a drag cost. Serrated trailing edges break up the trailing-edge flow in a different way.</p>
+<p>The set-up and the results are confidential too, so the picture shows the baseline airfoil only.</p>
+<figure class="flow-hero" style="margin:24px 0 0">
+<canvas data-flow="../assets/data/naca2412-a4.json" role="img" aria-label="Streamlines of inviscid flow around a NACA 2412 airfoil at 4 degrees, coloured by local speed, with particles moving along them"></canvas>
+<p class="view-pending" data-flow-fallback hidden>The flow field could not load.</p>
+<figcaption class="flow-caption">
+<span>Inviscid flow around the baseline NACA 2412 at 4°, from a vortex panel method written for this page (C<sub>l</sub> = 0.74). The attachments are not modelled here.</span>
+<span class="flow-legend"><span><i class="c"></i>slower than the free stream</span><span><i class="w"></i>faster</span></span>
+</figcaption>
+</figure>
 </div>
 <aside class="aside-stack">
 <div class="aside-block">
 <h2>ROLE</h2>
 <p>CFD engineer intern, Reude Technologies, January to May 2024.</p>
 </div>
+<div class="aside-block">
+<h2>TOOLS</h2>
+<ul><li>Ansys Fluent</li><li>NSGA-II multi-objective optimization</li></ul>
+</div>
+<div class="aside-block">
+<h2>ABOUT THE AIRFOIL PICTURE</h2>
+<p>The streamlines come from a constant-strength vortex panel method with 280 panels and a Kutta condition at the trailing edge. Its lift coefficient, 0.74 at 4°, is in line with thin-airfoil theory with a thickness correction. Viscous effects, and so the attachments, are outside what it can show.</p>
+</div>
 
 </aside>
 </div>
 
-<div class="figure-grid">
-</div>
-
 <nav class="sheet-nav" aria-label="Other projects">
 <a href="aero-devices.html"><span class="dir">PREVIOUS, SHEET 10</span><strong>Aero devices for high-performance cars</strong></a>
-<a class="next" href="naca-2412.html"><span class="dir">NEXT, SHEET 12</span><strong>NACA 2412 with Gurney flaps and serrations</strong></a>
+
 </nav>
 </div>
 
@@ -110,15 +126,15 @@
 <div class="foot-tb">
 <div><span class="k">NAME</span><span class="v">ROSHAN KARATHAN PRADEEP</span></div>
 <div><span class="k">TITLE</span><span class="v">UAV WING OPTIMIZATION</span></div>
-<div><span class="k">SHEET</span><span class="v tnum">11 OF 13</span></div>
+<div><span class="k">SHEET</span><span class="v tnum">11 OF 12</span></div>
 <div><span class="k">REV</span><span class="v">H</span></div>
-<div><span class="k">DATE</span><span class="v tnum">2026-11-04</span></div>
+<div><span class="k">DATE</span><span class="v tnum">2026-11-08</span></div>
 <div><span class="k">CONTACT</span><span class="v"><a href="../index.html#contact">EMAIL</a>, <a href="https://www.linkedin.com/in/roshanaerodynamics" rel="me">LINKEDIN</a></span></div>
 </div>
 <p class="foot-small">© 2026 Roshan Karathan Pradeep. Drawn in Stockholm, born in Chennai.</p>
 </div>
 </footer>
-<script src="../assets/js/site.js?v=202611041844"></script>
-
+<script src="../assets/js/site.js?v=202611082237"></script>
+<script src="../assets/js/flow-field.js?v=202611082237"></script>
 </body>
 </html>

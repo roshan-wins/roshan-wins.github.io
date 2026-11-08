@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Semi+Condensed:wght@500;600&family=Didact+Gothic&amp;display=swap">
-<link rel="stylesheet" href="../assets/css/site.css?v=202611041844">
+<link rel="stylesheet" href="../assets/css/site.css?v=202611082237">
 
 </head>
 <body>
@@ -130,7 +130,7 @@
 </div>
 </section>
 
-<div class="results"><div class="result"><span class="result__value">5 s</span><span class="result__label">faster in the standard slalom test, after suspension changes I made in Adams once the report was in</span></div><div class="result"><span class="result__value">8.5 m/s²</span><span class="result__label">lateral acceleration plateau measured in the 90 km/h slalom</span></div><div class="result"><span class="result__value">3.5 m/s²</span><span class="result__label">the level below which the linear bicycle model matches the car</span></div><div class="result"><span class="result__value">70.3 kN/m</span><span class="result__label">rear wheel rate in Adams Car, against 29.1 from the rigid-link hand calculation</span></div></div>
+<div class="results"><div class="result"><span class="result__value">5 s</span><span class="result__label">faster in the standard slalom than our real-car test at Lunda, in the Adams Car model after suspension changes I made once the report was in</span></div><div class="result"><span class="result__value">8.5 m/s²</span><span class="result__label">lateral acceleration plateau measured in the 90 km/h slalom</span></div><div class="result"><span class="result__value">3.5 m/s²</span><span class="result__label">the level below which the linear bicycle model matches the car</span></div><div class="result"><span class="result__value">70.3 kN/m</span><span class="result__label">rear wheel rate in Adams Car, against 29.1 from the rigid-link hand calculation</span></div></div>
 
 <div class="story">
 <div class="prose">
@@ -139,7 +139,7 @@
 <h2>Three models and one car</h2>
 <ul>
 <li><b>Bicycle model, MATLAB.</b> Lateral velocity and yaw rate as states, with either linear tires or Fiala brush tires that saturate at μF<sub>z</sub>. The measured steering angle and speed drive it.</li>
-<li><b>Full vehicle, Adams Car.</b> Double-wishbone front and multi-link rear, both with anti-roll bars; PAC2002 tires for 255/40 R19; a steering ratio of 16.3; brakes and powertrain. The assembled model weighs 2007 kg.</li>
+<li><b>Full vehicle, Adams Car.</b> Double-wishbone front and multi-link rear, both with anti-roll bars; PAC2002 tires for 255/40 R19; a steering ratio of 16.3; brakes and powertrain. The assembled model weighs 2007 kg, against 1995 kg in the bicycle model.</li>
 <li><b>Track data.</b> A VBOX GPS/IMU logged steering angle, velocities, yaw rate and accelerations at 100 Hz through ramp steer, step steer, double lane change and slalom runs between 50 and 90 km/h.</li>
 </ul>
 <h2>Calibrating the tires</h2>
@@ -154,12 +154,12 @@
 <h2>Mass and centre of gravity</h2>
 <p>With the Adams model validated, we changed the mass (−100, +100 and +200 kg) and moved the centre of gravity (−50, +50 and +100 mm) in step steers at 50 and 80 km/h. A lighter car and a rearward centre of gravity both raise the yaw response, and both effects grow with speed.</p>
 <h2>After the report</h2>
-<p>I kept working on the Adams Car model once the report was in. With modified suspension parameters, the model ran the standard slalom test 5 seconds faster. Those runs came after the report, so the figures above do not include them.</p>
+<p>I kept working on the Adams Car model once the report was in. With modified suspension parameters, the model ran the standard slalom test 5 seconds faster than the real car did in our test at the Lunda track. Those runs came after the report, so the figures above do not include them.</p>
 </div>
 <aside class="aside-stack">
 <div class="aside-block">
 <h2>ABOUT THE SIMULATOR</h2>
-<p>It uses the report's equations and parameters (1995 kg, yaw inertia 3090 kg·m², wheelbase 2.941 m, steering ratio 16.3) and integrates them in your browser. Unlike the report, it holds speed constant and uses a synthetic steering input instead of the recorded one.</p>
+<p>It uses the bicycle model's equations and parameters from the report (1995 kg, yaw inertia 3090 kg·m², wheelbase 2.941 m, steering ratio 16.3) and integrates them in your browser. Unlike the report, it holds speed constant and uses a synthetic steering input instead of the recorded one.</p>
 </div>
 <div class="aside-block">
 <h2>TEAM</h2>
@@ -219,15 +219,15 @@
 <div class="foot-tb">
 <div><span class="k">NAME</span><span class="v">ROSHAN KARATHAN PRADEEP</span></div>
 <div><span class="k">TITLE</span><span class="v">VOLVO S90 VEHICLE MODEL</span></div>
-<div><span class="k">SHEET</span><span class="v tnum">6 OF 13</span></div>
+<div><span class="k">SHEET</span><span class="v tnum">6 OF 12</span></div>
 <div><span class="k">REV</span><span class="v">H</span></div>
-<div><span class="k">DATE</span><span class="v tnum">2026-11-04</span></div>
+<div><span class="k">DATE</span><span class="v tnum">2026-11-08</span></div>
 <div><span class="k">CONTACT</span><span class="v"><a href="../index.html#contact">EMAIL</a>, <a href="https://www.linkedin.com/in/roshanaerodynamics" rel="me">LINKEDIN</a></span></div>
 </div>
 <p class="foot-small">© 2026 Roshan Karathan Pradeep. Drawn in Stockholm, born in Chennai.</p>
 </div>
 </footer>
-<script src="../assets/js/site.js?v=202611041844"></script>
-<script src="../assets/js/bicycle-sim.js?v=202611041844"></script>
+<script src="../assets/js/site.js?v=202611082237"></script>
+<script src="../assets/js/bicycle-sim.js?v=202611082237"></script>
 </body>
 </html>
