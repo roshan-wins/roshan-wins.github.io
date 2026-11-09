@@ -149,9 +149,13 @@
       var nv = pt.vertices, nt = pt.triangles;
       var pos = new Uint16Array(buf, pt.pos, nv * 3), nrm = new Int8Array(buf, pt.nrm, nv * 3);
       var idx = new Uint16Array(buf, pt.idx, nt * 3);
+      // the file packs a vertex into 6 bytes and a normal into 3; phone GPUs (Metal on iPhones) only read
+      // vertex data in steps of 4 bytes, so copy them into 8- and 4-byte steps before uploading
+      var pos4 = new Uint16Array(nv * 4), nrm4 = new Int8Array(nv * 4);
+      for (var q = 0; q < nv; q++) for (var j3 = 0; j3 < 3; j3++) { pos4[q * 4 + j3] = pos[q * 3 + j3]; nrm4[q * 4 + j3] = nrm[q * 3 + j3]; }
       var P = { info: pt, n: nt * 3, dir: Math.sign(pt.centre[0]) || 0 };
-      P.pos = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, P.pos); gl.bufferData(gl.ARRAY_BUFFER, pos, gl.STATIC_DRAW);
-      P.nrm = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, P.nrm); gl.bufferData(gl.ARRAY_BUFFER, nrm, gl.STATIC_DRAW);
+      P.pos = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, P.pos); gl.bufferData(gl.ARRAY_BUFFER, pos4, gl.STATIC_DRAW);
+      P.nrm = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, P.nrm); gl.bufferData(gl.ARRAY_BUFFER, nrm4, gl.STATIC_DRAW);
       P.idx = gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, P.idx); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, idx, gl.STATIC_DRAW);
       P.sample = [];
       for (var k = 0; k < nv; k += 7) for (var j = 0; j < 3; j++) P.sample.push(lo[j] + pos[k * 3 + j] / 65535 * (hi[j] - lo[j]) - c[j]);
@@ -211,7 +215,7 @@
       x0 = Math.min(x0, sx); x1 = Math.max(x1, sx); y0 = Math.min(y0, sy); y1 = Math.max(y1, sy);
     });
     var aspect = W / H, span = meta.span * 1.18;
-    var needH = Math.max(y1 - y0, (x1 - x0) / aspect) / 0.74;
+    var needH = Math.max(y1 - y0, (x1 - x0) / aspect) / (W / dpr < 480 ? 0.64 : 0.74);   // small stage: room for the scale bar
     var h = aspect >= 1 ? span : span / aspect;
     return clamp(h / needH, 0.6, 4);
   }
@@ -223,8 +227,8 @@
     gl.uniform3fv(u.u_off, offset(P)); gl.uniform3fv(u.u_col, col); gl.uniform1f(u.u_flat, flat); gl.uniform1f(u.u_a, a);
     var l1 = norm([cam.v.x[0] * -0.45 + cam.v.y[0] * 0.65 + cam.v.z[0] * 0.6, cam.v.x[1] * -0.45 + cam.v.y[1] * 0.65 + cam.v.z[1] * 0.6, cam.v.x[2] * -0.45 + cam.v.y[2] * 0.65 + cam.v.z[2] * 0.6]);
     gl.uniform3fv(u.u_l1, l1); gl.uniform3fv(u.u_l2, norm([-l1[0], 0.3, -l1[2]])); gl.uniform3fv(u.u_view, cam.v.z);
-    gl.bindBuffer(gl.ARRAY_BUFFER, P.pos); gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 3, gl.UNSIGNED_SHORT, true, 0, 0);
-    gl.bindBuffer(gl.ARRAY_BUFFER, P.nrm); gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1, 3, gl.BYTE, true, 0, 0);
+    gl.bindBuffer(gl.ARRAY_BUFFER, P.pos); gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 3, gl.UNSIGNED_SHORT, true, 8, 0);
+    gl.bindBuffer(gl.ARRAY_BUFFER, P.nrm); gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1, 3, gl.BYTE, true, 4, 0);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, P.idx); gl.drawElements(gl.TRIANGLES, P.n, gl.UNSIGNED_SHORT, 0);
     gl.disableVertexAttribArray(1);
   }
@@ -276,7 +280,20 @@
     });
     gl.depthMask(true);
     updateHud(cam);
+    if (!checked) { checked = true; if (!drewSomething()) giveUp(); }
   }
+  /* some phone GPUs fail without an error and draw nothing: read the first frame back once and,
+     if it is empty, show the still picture instead of an empty box */
+  var checked = false, dead = false;
+  function drewSomething() {
+    try {
+      var n = W * H * 4, px = new Uint8Array(n);
+      gl.readPixels(0, 0, W, H, gl.RGBA, gl.UNSIGNED_BYTE, px);
+      for (var i = 3; i < n; i += 28) if (px[i] > 0) return true;
+      return false;
+    } catch (e) { return true; }
+  }
+  function giveUp() { dead = true; root.classList.remove("viewer--ready"); root.classList.add("viewer--static"); }
   function mix(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
 
   /* ---------- HUD: angles and a true scale bar ---------- */
@@ -297,6 +314,7 @@
   /* ---------- loop ---------- */
   var last = 0;
   function loop(t) {
+    if (dead) return;
     t = t || 0;
     var dt = Math.min(0.05, (t - last) / 1000 || 0); last = t;
     if (anim) {
@@ -463,5 +481,5 @@
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) dirty = true; }, { rootMargin: "100px" }).observe(canvas);
   }
-  canvas.addEventListener("webglcontextlost", function (e) { e.preventDefault(); root.classList.add("viewer--static"); });
+  canvas.addEventListener("webglcontextlost", function (e) { e.preventDefault(); giveUp(); });
 })();

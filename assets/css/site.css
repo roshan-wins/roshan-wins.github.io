@@ -934,7 +934,9 @@ select { font: inherit; font-size: 15px; min-height: 44px; padding: 0 10px; bord
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .viewer--hero { --viewer-part-a: #b9c9dc; } }
 :root[data-theme="dark"] .viewer--hero { --viewer-part-a: #b9c9dc; }
 .viewer--hero .viewer__stage {
-  aspect-ratio: 4 / 3; min-height: 0;
+  /* a 4:3 box made from padding rather than aspect-ratio: every browser gives it a height, including
+     Safari on iPhones, where a stretched grid item with only absolutely placed content can collapse */
+  aspect-ratio: auto; height: 0; padding-bottom: 75%; min-height: 0; width: 100%; align-self: start;
   background: radial-gradient(ellipse 58% 52% at 50% 46%, var(--stage-glow), transparent 78%), var(--bg);
 }
 .viewer--hero .viewer__stage::before {
@@ -1214,3 +1216,12 @@ select { font: inherit; font-size: 15px; min-height: 44px; padding: 0 10px; bord
 .aero-fig .dwg { width: 100%; height: auto; }
 .aero-fig .dwg .mine { fill: var(--c-flow-tint); stroke: none; }
 .aero-fig .dwg .mine-line { stroke: var(--c-flow-ink); fill: none; }
+
+/* ---------- phones and tablets: the part straight under the name, not after the whole intro ---------- */
+@media (max-width: 1020px) {
+  .hero2 { row-gap: 20px; }
+  .hero2__text { display: contents; }
+  .hero2 .name-display, .hero2 .role-line { order: -2; }
+  .hero2__view { order: -1; margin-bottom: 8px; }
+  .hero2 .rev-tag { justify-self: start; }
+}
